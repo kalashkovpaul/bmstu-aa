@@ -3,16 +3,16 @@
 // calculate Domerau-Levenshtein distance - non-recurcive,
 // recursive algorithm without cache, with cache
 
-function levenshteinDistance(str1: string, str2: string) {
+function levenshteinDistance(str1, str2) {
     if (str1.length < str2.length) {
         [str1, str2] = [str2, str1];
     }
 
-    let previousRow = Array(str2.length);
-    let currentRow = Array(str2.length);
+    let previousRow = Array(str2.length + 1);
+    let currentRow = Array(str2.length + 1);
 
-    for (let i = 0; i < str1.length; i++) {
-        for (let j = 0; j < str2.length; j++) {
+    for (let i = 0; i < str1.length + 1; i++) {
+        for (let j = 0; j < str2.length + 1; j++) {
             if (i === 0 && j === 0) {
                 currentRow[j] = 0;
             } else if (i > 0 && j === 0) {
@@ -23,13 +23,13 @@ function levenshteinDistance(str1: string, str2: string) {
                 currentRow[j] = Math.min(
                     currentRow[j - 1] + 1,
                     previousRow[j] + 1,
-                    previousRow[j -1] + (str1[i] === str2[j] ? 0 : 1)
+                    previousRow[j - 1] + (str1[i - 1] === str2[j - 1] ? 0 : 1)
                 );
             }
         }
-        previousRow = currentRow;
+        previousRow = [...currentRow];
     }
-    return currentRow[str2.length - 1];
+    return currentRow[str2.length];
 }
 
 module.exports = levenshteinDistance;
