@@ -5,28 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-node",
+            "name": "Python: lab01 launch",
+            "type": "python",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}/index.ts",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
-        },
-        {
-            "name": "Debug Jest Tests",
-            "type": "node",
-            "request": "launch",
-            "runtimeArgs": [
-              "--inspect-brk",
-              "${workspaceRoot}/node_modules/.bin/jest",
-              "--runInBand"
-            ],
+            "program": "${workspaceFolder}/lab01/src/main.py",
             "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
+            "justMyCode": true
         }
     ]
 }
