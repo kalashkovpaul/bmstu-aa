@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: lab01 launch",
+            "name": "Python: lab02 launch",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/lab01/src/main.py",
+            "program": "${workspaceFolder}/lab02/src/main.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }

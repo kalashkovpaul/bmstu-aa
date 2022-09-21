@@ -32,7 +32,6 @@ def menu():
 
         elif (option == EXIT):
             print("Спасибо, что пользовались этой программой :)")
-            break
 
         else:
             print("\nПовторите ввод\n")
