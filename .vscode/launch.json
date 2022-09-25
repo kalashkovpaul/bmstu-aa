@@ -8,7 +8,7 @@
             "name": "Python: lab02 launch",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/lab02/src/main.py",
+            "program": "${workspaceFolder}/lab01/src/main.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }

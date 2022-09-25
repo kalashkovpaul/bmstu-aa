@@ -10,7 +10,7 @@
 
 \section{Листинги кода}
 
-В листингах \ref{lst:lev_mat}-\ref{lst:dam_lev_rec_cache} представлены реализации алгоритмов нахождения расстояния Левенштейна и Дамерау-Левенштейна.
+В листингах \ref{lst:lev_mat}-\ref{lst:dam_lev_rec_cache} представлена реализация алгоритмов нахождения расстояния Левенштейна и Дамерау-Левенштейна.
 
 \clearpage
 
@@ -36,7 +36,7 @@ def levenshteinDistance(str1: str, str2: str, output: bool = True) -> int:
 	if (output):
 		printMatrix(matrix, str1, str2)
 	
-return matrix[n][m]
+	return matrix[n][m]
 \end{lstlisting}
 \end{center}
 
@@ -103,7 +103,7 @@ def damerauLevenshteinDistanceRecursive(str1: str, str2: str, output: bool = Tru
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:dam_lev_rec_cache,caption=Алгоритм нахождения расстояния Дамерау-Левенштейна (рекурсивный с использованием кэша)]
+    \begin{lstlisting}[label=lst:dam_lev_rec_cache,caption=Алгоритм нахождения расстояния Дамерау-Левенштейна (рекурсивный с использованием кеша)]
 def recursiveWithCache(
 str1: str, str2: str, n: int, m: int, matrix: Matrix) -> None:
 	if (matrix[n][m] != -1):

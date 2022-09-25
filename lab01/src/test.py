@@ -29,8 +29,27 @@ def graphDamerauLev(
 
     fig = plt.figure(figsize=(10, 7))
     plot = fig.add_subplot()
-    plot.plot(sizes, timeDamerauLev, label = "Дамерау-Левенштейн")
+    plot.plot(sizes, timeDamerauLev, label = "Дамерау-Левенштейн (матричный)")
     plot.plot(sizes, timeDamerauLevRecursive, label="Дамерау-Левенштейн (рекурсия)")
+    plot.plot(sizes, timeDamerauLevRecursiveCache, label="Дамерау-Левенштейн (с кэшем)")
+
+    plt.legend()
+    plt.grid()
+    plt.title("Временные характеристики")
+    plt.ylabel("Затраченное время (с)")
+    plt.xlabel("Длина")
+
+    plt.show()
+
+def graphDamerauLevMatrCache(
+    timeDamerauLev: list[int],
+    timeDamerauLevRecursiveCache: list[int]) -> None:
+
+    sizes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    fig = plt.figure(figsize=(10, 7))
+    plot = fig.add_subplot()
+    plot.plot(sizes, timeDamerauLev, label = "Дамерау-Левенштейн (матричный)")
     plot.plot(sizes, timeDamerauLevRecursiveCache, label="Дамерау-Левенштейн (с кэшем)")
 
     plt.legend()
@@ -92,3 +111,4 @@ def testAlgorithms():
 
     graphLevAndDamerauLev(timeLev)
     graphDamerauLev(timeDamerauLev, timeDamerauLevRecursive, timeDamerauLevRecursiveCache)
+    graphDamerauLevMatrCache(timeDamerauLev, timeDamerauLevRecursiveCache)

@@ -4,7 +4,7 @@ DAM = 2
 DAM_REC = 3
 DAM_REC_CACHE = 4
 TEST =  5
-TIMES = 100
+TIMES = 500
 TO_MILISECONDS = 1000
 
 MESSAGE = "\n\nМеню \n\n \
