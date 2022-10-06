@@ -1,28 +1,23 @@
-def pancakeSort(data, n):
-    if n > 1:
-        for size in range(n, 1, -1):
+def pancakeSort(data, size):
+    if size > 1:
+        for currentSize in range(size, 1, -1):
             # Позиция максимума в неотсортированной части
-            maxindex = max(range(size), key = data.__getitem__)
-            if maxindex + 1 != size:
+            maxIndex = max(range(currentSize), key = data.__getitem__)
+            if maxIndex + 1 != currentSize:
                 # Если максимум не слова, то нужно развернуть
-                if maxindex != 0:
+                if maxIndex != 0:
                     # Переворачиваем так, чтобы максимум оказался слева
-                    data[:maxindex + 1] = reversed(data[:maxindex + 1])
+                    data[:maxIndex + 1] = reversed(data[:maxIndex + 1])
                 # Переворачиваем неотсортированную часть массива,
                 # максимум становится на своё место
-                data[:size] = reversed(data[:size])
+                data[:currentSize] = reversed(data[:currentSize])
     return data
 
-# Radix sort in Python
-
-
-# Using counting sort to sort the elements in the basis of significant places
-def countingSort(array, place):
-    size = len(array)
+def countingSort(array, size, place):
     output = [0] * size
     count = [0] * 10
 
-    # Calculate count of elements
+    # Считаем количество каждых значений
     for i in range(0, size):
         index = array[i] // place
         count[index % 10] += 1
@@ -44,53 +39,14 @@ def countingSort(array, place):
 
 
 # Main function to implement radix sort
-def radixSort(data, n):
-    # Get maximum element
-    max_element = max(data)
-
+def radixSort(data, size):
+    maxElement = max(data)
     # Apply counting sort to sort elements based on place value.
     place = 1
-    while max_element // place > 0:
-        countingSort(data, place)
+    while maxElement // place > 0:
+        countingSort(data, size, place)
         place *= 10
     return data
-
-
-def shaker_sort(arr, n):
-
-    left = 0
-    right = n - 1
-
-    swapped = True
-
-    while(swapped):
-        swapped = False
-
-        for i in range(left, right):
-            if (arr[i] > arr[i + 1]):
-                tmp = arr[i]
-                arr[i] = arr[i + 1]
-                arr[i + 1] = tmp
-
-                swapped = True
-
-        if (swapped == False):
-            break
-
-        swapped = False
-        right -= 1
-
-        for i in range(right - 1, left - 1, -1):
-            if (arr[i] > arr[i + 1]):
-                tmp = arr[i]
-                arr[i] = arr[i + 1]
-                arr[i + 1] = tmp
-
-                swapped = True
-
-        left += 1
-
-    return arr
 
 class BSTNode:
     def __init__(self, key):
@@ -119,7 +75,6 @@ class BSTNode:
     def inorder(self):
         if self.left is not None:
             self.left.inorder()
-        # print(self.key, end=' ')
         if self.right is not None:
             self.right.inorder()
 
@@ -149,11 +104,8 @@ class BSTree:
         else:
             self.root.insert(new_node)
 
-
-
 def bstSort(data, n):
     bstree = BSTree()
     for x in data:
         bstree.add(x)
-    bstree.inorder()
     return bstree
