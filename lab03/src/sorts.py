@@ -16,32 +16,22 @@ def pancakeSort(data, size):
 def countingSort(array, size, place):
     output = [0] * size
     count = [0] * 10
-
-    # Считаем количество каждых значений
     for i in range(0, size):
-        index = array[i] // place
-        count[index % 10] += 1
-
-    # Calculate cumulative count
+        count[(array[i] // place) % 10] += 1
     for i in range(1, 10):
         count[i] += count[i - 1]
-
-    # Place the elements in sorted order
     i = size - 1
     while i >= 0:
         index = array[i] // place
         output[count[index % 10] - 1] = array[i]
         count[index % 10] -= 1
         i -= 1
-
     for i in range(0, size):
         array[i] = output[i]
 
 
-# Main function to implement radix sort
 def radixSort(data, size):
     maxElement = max(data)
-    # Apply counting sort to sort elements based on place value.
     place = 1
     while maxElement // place > 0:
         countingSort(data, size, place)

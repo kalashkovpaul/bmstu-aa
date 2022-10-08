@@ -17,91 +17,77 @@
 
 \section{Листинги кода}
 
-В листингах \ref{lst:shaker_sort}, \ref{lst:insert_sort}, \ref{lst:gnomme_sort} представлены реализации алгоритмов сортировок (перемешиванием, вставками и гномьей).
+В листингах \ref{lst:pancake_sort}, \ref{lst:radix_sort},\ref{lst:counting_sort}, \ref{lst:bst_sort} представлены реализации алгоритмов сортировок (блинной, поразрядной, подсчётом и бинарным деревом). \clearpage
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:shaker_sort,caption=Алгоритм сортировки перемешиванием]
-        def shaker_sort(arr, n):
-    
-        left = 0
-        right = n - 1
-    
-        swapped = True
-    
-        while(swapped):
-            swapped = False
-    
-            for i in range(left, right):
-                if (arr[i] > arr[i + 1]):
-                    tmp = arr[i]
-                    arr[i] = arr[i + 1]
-                    arr[i + 1] = tmp
-    
-                    swapped = True
-    
-            if (swapped == False):
-                break
-    
-            swapped = False
-            right -= 1
-    
-            for i in range(right - 1, left - 1, -1):
-                if (arr[i] > arr[i + 1]):
-                    tmp = arr[i]
-                    arr[i] = arr[i + 1]
-                    arr[i + 1] = tmp
-    
-                    swapped = True
-    
-            left += 1
-    
-        return arr
-\end{lstlisting}
+    \begin{lstlisting}[label=lst:pancake_sort,caption=Алгоритм блинной сортировки]
+	def pancakeSort(data, size):
+		if size > 1:
+			for currentSize in range(size, 1, -1):
+				maxIndex = max(range(currentSize), key = data.__getitem__)
+				if maxIndex + 1 != currentSize:
+					if maxIndex != 0:
+						data[:maxIndex + 1] = reversed(data[:maxIndex + 1])
+					data[:currentSize] = reversed(data[:currentSize])
+		return data
+	\end{lstlisting}
 \end{center}
-
-\clearpage
 
 \begin{center}
 \captionsetup{justification=raggedright,singlelinecheck=off}
-\begin{lstlisting}[label=lst:insert_sort,caption=Алгоритм сортировки вставками]
-    def insertion_sort(arr, n):
-
-    for i in range(1, n):
-        j = i - 1
-        tmp = arr[i]
-
-        while (j >= 0 and arr[j] > tmp):
-            arr[j + 1] = arr[j]
-            j -= 1
-
-        arr[j + 1] = tmp
-
-    return arr
+\begin{lstlisting}[label=lst:radix_sort,caption=Алгоритм поразрядной сортировки]
+def radixSort(data, size):
+	maxElement = max(data)
+	place = 1
+	while maxElement // place > 0:
+		countingSort(data, size, place)
+		place *= 10
+	return data
 \end{lstlisting}
 \end{center}
 
 
 \begin{center}
 \captionsetup{justification=raggedright,singlelinecheck=off}
-\begin{lstlisting}[label=lst:gnomme_sort,caption=Алгоритм гномьей сортировки]
-    def gnomme_sort(arr, n):
-    
-    i = 1
-
-    while (i < n):
-        if (arr[i] < arr[i - 1]):
-            tmp = arr[i]
-            arr[i] = arr[i - 1]
-            arr[i - 1] = tmp
-
-            if (i > 1):
-                i -= 1
-        else:
-            i += 1
-
-    return arr
+\begin{lstlisting}[label=lst:counting_sort,caption=Алгоритм сортировки подсчётом]
+def countingSort(array, size, place):
+	output = [0] * size
+	count = [0] * 10
+	for i in range(0, size):
+		count[(array[i] // place) % 10] += 1
+	for i in range(1, 10):
+		count[i] += count[i - 1]
+		i = size - 1
+	while i >= 0:
+		index = array[i] // place
+		output[count[index % 10] - 1] = array[i]
+		count[index % 10] -= 1
+		i -= 1
+	for i in range(0, size):
+		array[i] = output[i]
 \end{lstlisting}
+\end{center}
+
+\begin{center}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:bst_sort,caption=Алгоритм сортировки подсчётом]
+		def countingSort(array, size, place):
+		output = [0] * size
+		count = [0] * 10
+		for i in range(0, size):
+		count[(array[i] // place) % 10] += 1
+		for i in range(1, 10):
+		count[i] += count[i - 1]
+		i = size - 1
+		while i >= 0:
+		index = array[i] // place
+		output[count[index % 10] - 1] = array[i]
+		count[index % 10] -= 1
+		i -= 1
+		for i in range(0, size):
+		array[i] = output[i]
+	\end{lstlisting}
 \end{center}
 
 \section{Функциональные тесты}
@@ -120,7 +106,7 @@
 			\hline
 			$[1, 2, 3, 4, 5]$ & $[1, 2, 3, 4, 5]$  & $[1, 2, 3, 4, 5]$\\
 			$[5, 4, 3, 2, 1]$  & $[1, 2, 3, 4, 5]$ & $[1, 2, 3, 4, 5]$\\
-			$[9, 7, -5, 1, 4]$  & $[-5, 1, 4, 7, 9]$  & $[-5, 1, 4, 7, 9]$\\
+			$[9, 7, 5, 1, 4]$  & $[1, 4, 5, 7, 9]$  & $[1, 4, 5, 7, 9]$\\
 			$[5]$  & $[5]$  & $[5]$\\
 			$[]$  & $[]$  & $[]$\\
 			\hline
