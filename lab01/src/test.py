@@ -10,13 +10,13 @@ def graphLevAndDamerauLev(timeLev: int) -> None:
 
     fig = plt.figure(figsize=(10, 7))
     plot = fig.add_subplot()
-    plot.plot(sizes, timeLev, label = "Левенштейн")
+    plot.plot(sizes, timeLev, "g:", label = "Левенштейн")
 
     plt.legend()
     plt.grid()
     plt.title("Временные характеристики")
     plt.ylabel("Затраченное время (с)")
-    plt.xlabel("Длина")
+    plt.xlabel("Длина, символы")
 
     plt.show()
 
@@ -29,15 +29,15 @@ def graphDamerauLev(
 
     fig = plt.figure(figsize=(10, 7))
     plot = fig.add_subplot()
-    plot.plot(sizes, timeDamerauLev, label = "Дамерау-Левенштейн (матричный)")
-    plot.plot(sizes, timeDamerauLevRecursive, label="Дамерау-Левенштейн (рекурсия)")
-    plot.plot(sizes, timeDamerauLevRecursiveCache, label="Дамерау-Левенштейн (с кэшем)")
+    plot.plot(sizes, timeDamerauLev, ":", label = "Дамерау-Левенштейн (матричный)")
+    plot.plot(sizes, timeDamerauLevRecursive, "", label="Дамерау-Левенштейн (рекурсия)")
+    plot.plot(sizes, timeDamerauLevRecursiveCache, "--", label="Дамерау-Левенштейн (с кэшем)")
 
     plt.legend()
     plt.grid()
     plt.title("Временные характеристики")
     plt.ylabel("Затраченное время (с)")
-    plt.xlabel("Длина")
+    plt.xlabel("Длина, символы")
 
     plt.show()
 
@@ -49,14 +49,14 @@ def graphDamerauLevMatrCache(
 
     fig = plt.figure(figsize=(10, 7))
     plot = fig.add_subplot()
-    plot.plot(sizes, timeDamerauLev, label = "Дамерау-Левенштейн (матричный)")
+    plot.plot(sizes, timeDamerauLev, ":", label = "Дамерау-Левенштейн (матричный)")
     plot.plot(sizes, timeDamerauLevRecursiveCache, label="Дамерау-Левенштейн (с кэшем)")
 
     plt.legend()
     plt.grid()
     plt.title("Временные характеристики")
     plt.ylabel("Затраченное время (с)")
-    plt.xlabel("Длина")
+    plt.xlabel("Длина, символы")
 
     plt.show()
 

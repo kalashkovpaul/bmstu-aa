@@ -2,9 +2,9 @@
 # Task: implement 3 algorithms of matrix multiplication:
 # standart algorithm, winograd algorithm, optimized winograd algorithm.
 # Optimizations:
-# 1. cache of N / 2
-# 2. * 2 => << 1
-# 3. k += 2
+1. кэшировать of N / 2
+2. * 2 => << 1
+3. k += 2
 
 from utils import Matrix
 
