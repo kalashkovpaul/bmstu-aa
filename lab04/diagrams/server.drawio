@@ -1,0 +1,115 @@
+<mxfile host="65bd71144e">
+    <diagram id="aUnT7LFseOe2xe_AJLDL" name="Страница 1">
+        <mxGraphModel dx="1407" dy="916" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="110" value="" style="whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry width="820" height="1160" as="geometry"/>
+                </mxCell>
+                <mxCell id="124" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="68" target="115">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="Получить N&amp;nbsp;" style="html=1;dashed=0;whitespace=wrap;rotation=0;" parent="1" vertex="1">
+                    <mxGeometry x="262" y="150" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="123" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=25;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="3" target="68">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Начало" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rotation=0;" parent="1" vertex="1">
+                    <mxGeometry x="262" y="80.32" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="5" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="shape=partialRectangle;whiteSpace=wrap;html=1;bottom=1;right=1;left=1;top=0;fillColor=none;routingCenterX=-0.5;rotation=90;" parent="1" vertex="1">
+                    <mxGeometry x="454" y="71.32" width="58.5" height="72.37" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Сервер раздачи статической&lt;br&gt;информации, реализующий&lt;br&gt;паттерн thread pool" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="451.5" y="85.01" width="180" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="129" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="20" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="shape=loopLimit;whiteSpace=wrap;html=1;rotation=-180;" parent="1" vertex="1">
+                    <mxGeometry x="262" y="780" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Конец" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
+                    <mxGeometry x="258.25" y="850" width="157.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="128" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="73" target="117">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="Пока правда" style="shape=loopLimit;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="262" y="430" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="Захватить mutex" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="405" y="555" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="106" value="Да" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="436.5" y="500" width="30" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="113" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;rounded=0;endArrow=none;endFill=0;dashed=1;" parent="1" source="111" target="68" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="111" value="" style="shape=partialRectangle;whiteSpace=wrap;html=1;bottom=1;right=1;left=1;top=0;fillColor=none;routingCenterX=-0.5;rotation=90;" parent="1" vertex="1">
+                    <mxGeometry x="454" y="138.82" width="58.5" height="72.37" as="geometry"/>
+                </mxCell>
+                <mxCell id="112" value="N - количество &lt;br&gt;используемых потоков" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="466.5" y="160" width="150" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="126" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="114" target="116">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="114" value="Инициализировать&amp;nbsp;&lt;br&gt;массив потоков pool[N]&lt;br&gt;на выполнение handle()" style="html=1;dashed=0;whitespace=wrap;rotation=0;" parent="1" vertex="1">
+                    <mxGeometry x="262" y="290" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="125" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="115" target="114">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="115" value="Инициализировать queue,&lt;br&gt;mutex" style="html=1;dashed=0;whitespace=wrap;rotation=0;" parent="1" vertex="1">
+                    <mxGeometry x="262" y="220.19" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="127" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="116" target="73">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="116" value="Начать слушать &lt;br&gt;порт 8080" style="html=1;dashed=0;whitespace=wrap;rotation=0;" vertex="1" parent="1">
+                    <mxGeometry x="262" y="360" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="121" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="117" target="20">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="170" y="520"/>
+                            <mxPoint x="170" y="760"/>
+                            <mxPoint x="337" y="760"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="122" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="117" target="75">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="480" y="520"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="117" value="Новый запрос&amp;nbsp;&lt;br&gt;получен?" style="shape=rhombus;html=1;dashed=0;whitespace=wrap;perimeter=rhombusPerimeter;" vertex="1" parent="1">
+                    <mxGeometry x="262" y="495" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="118" value="Поместить новый запрос&lt;br&gt;в очередь queue" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="405" y="620" width="150" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="120" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1" source="119" target="20">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="480" y="760"/>
+                            <mxPoint x="337" y="760"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="119" value="Освободить mutex" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="405" y="687" width="150" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,141 @@
+\chapter{Технологическая часть}
+
+В данном разделе будут рассмотрены средства реализации, а также представлены листинги реализаций рассматриваемых сортировок.
+
+\section{Средства реализации}
+В данной работе для реализации был выбран язык программирования $C++\cite{cpp-lang}$. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
+и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
+
+Построение графиков и функциональное тестирование было осуществлено при помощи языка программирования $Python \cite{python-lang}$, нагрузочное тестирование при помощи утилиты $wrk \cite{wrk}$, а время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time \cite{python-lang-time}$.
+
+\section{Сведения о модулях программы}
+Программа состоит из шести модулей:
+\begin{enumerate}[label=\arabic*)]
+	\item $main$ -- файл, содержащий точку входа;
+	\item $Server$ -- модуль, содержащий реализацию сервера;
+	\item $utils$ -- модуль, содержащий служебные алгоритмы;
+	\item $constants.hpp$ -- файл, содержаший константы программы;
+	\item $responses.hpp$ -- файл, содержащий шаблоны ответов. \newline
+\end{enumerate}
+
+
+\section{Реализации алгоритмов}
+
+В листингах \ref{lst:server_header}, \ref{lst:server_run},\ref{lst:server_handle} представлены реализации алгоритмов создания пула потоков, помещения запросов в очередь и обработки запроса в потоке\clearpage
+
+\begin{center}
+    \captionsetup{justification=raggedright,singlelinecheck=off}
+    \begin{lstlisting}[label=lst:server_header,caption=Заголовочный файл реализации сервера, включающий в себя создание пула потоков]
+class Server {
+	public:
+	Server() = delete;
+	
+	explicit Server(size_t poolSize = POOL_SIZE, int port = PORT, int countConn = CONN_COUNT)
+	:poolSize(poolSize), serverPort(port), queueConnections(CONN_COUNT) {
+		this->serverSocket = 0, this->clientSocket =  0;
+		memset(&this->serverAddress, 0, sizeof(struct sockaddr_in));
+		memset(&this->clientAddress, 0, sizeof(struct sockaddr_in));
+		this->threadPool.resize(this->poolSize);
+		for(size_t i = 0; i < this->poolSize; i++) {
+			this->threadPool[i] = std::thread([this](){this->handleRequest();});
+		}
+	};
+	
+	int init();
+	void run();
+	
+	private:
+	int serverSocket;
+	int clientSocket;
+	struct sockaddr_in serverAddress;
+	struct sockaddr_in clientAddress;
+	int serverPort;
+	
+	std::vector<std::thread> threadPool;
+	size_t poolSize;
+	std::queue<int> requestQueue;
+	
+	int queueConnections;
+	std::mutex queueMutex;
+	std::condition_variable cv;
+	
+	void handleRequest();
+	int loadConfig();
+};
+	\end{lstlisting}
+\end{center}
+
+\begin{center}
+\captionsetup{justification=raggedright,singlelinecheck=off}
+\begin{lstlisting}[label=lst:server_run,caption=Запуск сервера и алгоритм помещения запросов в очередь]
+void Server::run() {
+	while (true) {
+		socklen_t addr_size = sizeof(this->clientAddress);
+		this->clientSocket = accept(serverSocket, (struct sockaddr *) &this->clientAddress, &addr_size);
+		char peerIP[INET_ADDRSTRLEN] = {0};
+		if (inet_ntop(AF_INET, &this->clientAddress.sin_addr, peerIP, sizeof(peerIP))) {
+			std::cout << "Accepted connection with " << peerIP << "\n";
+		} else {
+			return;
+		}
+		this->queueMutex.lock();
+		this->requestQueue.push(clientSocket);
+		this->cv.notify_one();
+		this->queueMutex.unlock();
+	}
+}
+\end{lstlisting}
+\end{center}
+
+
+\begin{center}
+\captionsetup{justification=raggedright,singlelinecheck=off}
+\begin{lstlisting}[label=lst:server_handle,caption=Алгоритм обработки запроса в потоке]
+void Server::handleRequest() {
+	std::unique_lock<std::mutex> lock(this->queueMutex, std::defer_lock);
+	int client_socket = -1;
+	while (true) {
+		lock.lock();
+		this->cv.wait(lock, [this]() { return !this->requestQueue.empty(); });
+		client_socket = this->requestQueue.front();
+		this->requestQueue.pop();
+		lock.unlock();
+		char req[2 * REQ_SIZE];
+		recv(client_socket, req, sizeof(req), 0);
+		std::string reply = handle(req);
+		send(client_socket, reply.c_str(), reply.size(), 0);
+		close(client_socket);
+	}
+}
+\end{lstlisting}
+\end{center}
+
+\section{Функциональные тесты}
+
+В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы сортировки. Тесты для всех сортировок пройдены \textit{успешно}.
+
+
+\begin{center}
+	\captionsetup{justification=raggedleft,singlelinecheck=off}
+%	\caption{\label{tbl:functional_test} Функциональные тесты}
+	\begin{tabular}{|c|c|
+		\hline
+		Содержимое URL & Ожидаемый результат \\ 
+		\hline
+		Пусто & Ответа нет\\
+		Заголовок HTTP1.1  & Ответа нет\\
+		/test  & Server \\
+		/test/dirToTest  & /test/dirToTest/index.html \\
+		/test/deep  & Статус 403\\
+		/test/blablabla.txt  & Статус 403\\
+		/test/deep/deeper/deepest/deep.txt & bingo, you found it\\
+		/test/dirToTest/page.html/ & Статус 404\\
+		/test/dirToTest/page.html?arg=val & Статус 404\\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+\section*{Вывод}
+
+Были разработаны схемы всех трех алгоритмов сортировки. Для каждого алгоритма была вычислена трудоёмкость и оценены лучший и худший случаи.
