@@ -113,7 +113,7 @@ class HttpServer(unittest.TestCase):
 
   def test_file_urlencoded(self):
     """urlencoded filename"""
-    self.conn.request("GET", "/test/dirToTest/%70%61%67%65%2e%68%74%6d%6c")
+    self.conn.request("GET", "/test/dirToTest/%61%2e%68%74%6d%6c")
     r = self.conn.getresponse()
     data = r.read()
     length = r.getheader("Content-Length")

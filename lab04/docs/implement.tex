@@ -6,7 +6,7 @@
 В данной работе для реализации был выбран язык программирования $C++\cite{cpp-lang}$. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
 и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
 
-Построение графиков и функциональное тестирование было осуществлено при помощи языка программирования $Python \cite{python-lang}$, нагрузочное тестирование при помощи утилиты $wrk \cite{wrk}$, а время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time \cite{python-lang-time}$.
+Построение графиков и функциональное тестирование было осуществлено при помощи языка программирования $Python \cite{python-lang}$, нагрузочное тестирование и замеры времени при помощи утилиты $wrk \cite{wrk}$.
 
 \section{Сведения о модулях программы}
 Программа состоит из шести модулей:
@@ -112,13 +112,12 @@ void Server::handleRequest() {
 
 \section{Функциональные тесты}
 
-В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы сортировки. Тесты для всех сортировок пройдены \textit{успешно}.
+В таблице \ref{tbl:functional_test} приведены запросы для написанного сервера раздачи статической информации. Тесты для всех запросов пройдены \textit{успешно}.
 
-
+\begin{table}[h]
 \begin{center}
-	\captionsetup{justification=raggedleft,singlelinecheck=off}
-%	\caption{\label{tbl:functional_test} Функциональные тесты}
-	\begin{tabular}{|c|c|
+	\caption{\label{tbl:functional_test} Функциональные тесты}
+	\begin{tabular}{|c|c|}
 		\hline
 		Содержимое URL & Ожидаемый результат \\ 
 		\hline
@@ -131,11 +130,26 @@ void Server::handleRequest() {
 		/test/deep/deeper/deepest/deep.txt & bingo, you found it\\
 		/test/dirToTest/page.html/ & Статус 404\\
 		/test/dirToTest/page.html?arg=val & Статус 404\\
+		\text{/test/s\%20p\%20a\%20c\%20e.txt} & s p a c e.txt \\
+		\text{/test/dirToTest/\%61\%2e\%68\%74\%6d\%6c} &  page.html \\
+		\text{/test/wikipedia\_russia.html} & Страница Википедии \\
+		/test/../../../../../../../../../../../../../etc/passwd & Статус 403 \\
+		/test/text..txt & text..txt \\
+%		POST: /test/dirToTest/page.html & 405 \\
+%		HEAD: /test/dirToTest/page.html & 405 \\
+		/test/dirToTest/page.html & page.html \\
+		/test/css.css & css.css \\
+		/test/js.js & js.js \\
+		/test/jpg.jpg & jpg.jpg \\
+		/test/jpeg.jpeg & jpeg.jpeg \\
+		/test/png.png & png.png \\
+		/test/gif.gif & gif.gif \\
+		/test/swf.swf & swf.swf \\
 		\hline
 	\end{tabular}
 \end{center}
-
+\end{table}
 
 \section*{Вывод}
 
-Были разработаны схемы всех трех алгоритмов сортировки. Для каждого алгоритма была вычислена трудоёмкость и оценены лучший и худший случаи.
+В данном разделе были выбраны средства реализации, представлены листинги реализаций алгоритмов создания пула потоков, помещения запросов в очередь и обработки запроса в потоке, а также рассмотрены запросы для функционального тестирования, которое для всех запросов проходит успешно.
