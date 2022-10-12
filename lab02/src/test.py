@@ -55,8 +55,8 @@ def testAlgorithms() -> None:
     fig = plt.figure(figsize=(10, 7))
     plot = fig.add_subplot()
     plot.plot(testSize, timeStdAlg, label = "Стандартный алгоритм")
-    plot.plot(testSize, timeWinAlg, label="Алгоритм Винограда")
-    plot.plot(testSize, timeOptWinAlg, label="Оптимизированный алгоритм Винограда")
+    plot.plot(testSize, timeWinAlg, ":", label="Алгоритм Винограда")
+    plot.plot(testSize, timeOptWinAlg, "--", label="Оптимизированный алгоритм Винограда")
 
     plt.legend()
     plt.grid()
