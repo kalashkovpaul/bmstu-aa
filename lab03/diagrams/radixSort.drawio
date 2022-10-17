@@ -1,13 +1,13 @@
 <mxfile host="65bd71144e">
     <diagram id="aUnT7LFseOe2xe_AJLDL" name="Страница 1">
-        <mxGraphModel dx="595" dy="388" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="774" dy="504" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="126" value="" style="whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+                <mxCell id="126" value="" style="whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry width="820" height="1160" as="geometry"/>
                 </mxCell>
-                <mxCell id="113" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=25;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="3" target="103">
+                <mxCell id="113" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=25;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="3" target="103" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="Начало" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
@@ -19,32 +19,32 @@
                 <mxCell id="5" value="" style="shape=partialRectangle;whiteSpace=wrap;html=1;bottom=1;right=1;left=1;top=0;fillColor=none;routingCenterX=-0.5;rotation=90;" parent="1" vertex="1">
                     <mxGeometry x="446.5" y="80" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="Поразрядная сортировка&lt;br&gt;(элементы в произвольном порядке)&lt;br&gt;&lt;br&gt;Вход: массив data размера size&lt;br&gt;Выход: отсортированный массив&lt;br&gt;countSort - сортировка подсчётом" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="495" y="65" width="220" height="90" as="geometry"/>
+                <mxCell id="6" value="Поразрядная сортировка&lt;br&gt;(элементы в произвольном порядке)&lt;br&gt;&lt;br&gt;Вход: массив data размера size&lt;br&gt;Выход: отсортированный массив&lt;br&gt;countingSort - сортировка подсчётом" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="496" y="66" width="218" height="88" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="Конец" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
                     <mxGeometry x="261.25" y="820" width="157.5" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="102" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="103" target="105">
+                <mxCell id="102" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;" parent="1" source="103" target="105" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="103" value="i = 0,&amp;nbsp;&lt;br&gt;maxElement = data[0]" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                <mxCell id="103" value="i = 0,&amp;nbsp;&lt;br&gt;maxElement = data[0]" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
                     <mxGeometry x="265" y="160" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="104" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="105" target="108">
+                <mxCell id="104" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="105" target="108" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="105" value="Пока i &amp;lt; size" style="shape=loopLimit;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="105" value="Пока i &amp;lt; size" style="shape=loopLimit;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="265" y="230" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="106" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="108" target="110">
+                <mxCell id="106" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="108" target="110" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="453" y="320"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="107" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="108" target="111">
+                <mxCell id="107" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="108" target="111" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="220" y="320"/>
@@ -53,10 +53,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="108" value="data[i] &amp;gt; maxElement" style="shape=rhombus;html=1;dashed=0;whitespace=wrap;perimeter=rhombusPerimeter;" vertex="1" parent="1">
+                <mxCell id="108" value="data[i] &amp;gt; maxElement" style="shape=rhombus;html=1;dashed=0;whitespace=wrap;perimeter=rhombusPerimeter;" parent="1" vertex="1">
                     <mxGeometry x="265" y="295" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="109" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="110" target="111">
+                <mxCell id="109" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="110" target="111" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="453" y="420"/>
@@ -64,47 +64,47 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="110" value="maxElementt = data[i]" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                <mxCell id="110" value="maxElementt = data[i]" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
                     <mxGeometry x="377.5" y="345" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="121" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="111" target="116">
+                <mxCell id="121" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" parent="1" source="111" target="116" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="111" value="" style="shape=loopLimit;whiteSpace=wrap;html=1;rotation=-180;" vertex="1" parent="1">
+                <mxCell id="111" value="" style="shape=loopLimit;whiteSpace=wrap;html=1;rotation=-180;" parent="1" vertex="1">
                     <mxGeometry x="265" y="435" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="112" value="i += 1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="1">
+                <mxCell id="112" value="i += 1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="315" y="450" width="50" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="123" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="115" target="117">
+                <mxCell id="128" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="115" target="127">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="115" value="Пока maxElement // place &amp;gt; 0" style="shape=loopLimit;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="115" value="Пока maxElement // place &amp;gt; 0" style="shape=loopLimit;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="265" y="585" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="122" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="116" target="115">
+                <mxCell id="122" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;" parent="1" source="116" target="115" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="116" value="place = 1" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                <mxCell id="116" value="place = 1" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
                     <mxGeometry x="265" y="510" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="124" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="117" target="118">
+                <mxCell id="125" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=none;endFill=0;" parent="1" source="118" target="23" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="117" value="countingSort(data, place)" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
-                    <mxGeometry x="265" y="660" width="150" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="125" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="118" target="23">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="118" value="" style="shape=loopLimit;whiteSpace=wrap;html=1;rotation=-180;" vertex="1" parent="1">
+                <mxCell id="118" value="" style="shape=loopLimit;whiteSpace=wrap;html=1;rotation=-180;" parent="1" vertex="1">
                     <mxGeometry x="265" y="740" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="119" value="&lt;span&gt;place *= 10&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="1">
+                <mxCell id="119" value="&lt;span&gt;place *= 10&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="300" y="755" width="80" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="120" value="Да" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="1">
+                <mxCell id="120" value="Да" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="414" y="300" width="30" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="129" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="127" target="118">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="127" value="countingSort(data, place)" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rotation=0;" vertex="1" parent="1">
+                    <mxGeometry x="265" y="663" width="150" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

@@ -1,23 +1,28 @@
 \chapter{Технологическая часть}
 
-В данном разделе будут рассмотрены средства реализации, а также представлены листинги сортировок.
+В данном разделе будут рассмотрены средства реализации, а также представлены листинги реализаций рассматриваемых сортировок.
 
 \section{Средства реализации}
-В данной работе для реализации был выбран язык программирования $Python \cite{python-lang}$. В текущей лабораторной работе требуется замерить процессорное время для выполняемой программы, а также построить графики. Все эти инструменты присутствуют в выбранном языке программирования.
+В данной работе для реализации был выбран язык программирования $Python$ \cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
+и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
 
-Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time \cite{python-lang-time}$.
+Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time$ \cite{python-lang-time}.
 
 \section{Сведения о модулях программы}
-Программа состоит из двух модулей:
-\begin{itemize}
-	\item $main.py$ - файл, содержащий весь служебный код;
-    \item $sorts.py$ - файл, содержащий код всех сортировок. \newline
-\end{itemize}
+Программа состоит из шести модулей:
+\begin{enumerate}[label=\arabic*)]
+	\item $main.py$ -- файл, содержащий точку входа;
+	\item $menu.py$ -- файл, содержащий код меню программы;
+	\item $test.py$ -- файл, содержаший код тестирования алгоритмов;
+	\item $utils.py$ -- файл, содержащий служебные алгоритмы;
+	\item $constants.py$ -- файл, содержаший константы программы;
+	\item $algorythms.py$ -- файл, содержащий код всех алгоритмов. \newline
+\end{enumerate}
 
 
-\section{Листинги кода}
+\section{Реализации алгоритмов}
 
-В листингах \ref{lst:pancake_sort}, \ref{lst:radix_sort},\ref{lst:counting_sort}, \ref{lst:bst_sort} представлены реализации алгоритмов сортировок (блинной, поразрядной, подсчётом и бинарным деревом). \clearpage
+В листингах \ref{lst:pancake_sort}, \ref{lst:radix_sort}, \ref{lst:counting_sort}, \ref{lst:bst_sort} представлены реализации алгоритмов сортировок (блинной, поразрядной, подсчётом и бинарным деревом). \clearpage
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
@@ -71,28 +76,38 @@ def countingSort(array, size, place):
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:bst_sort,caption=Алгоритм сортировки подсчётом]
-		def countingSort(array, size, place):
-		output = [0] * size
-		count = [0] * 10
-		for i in range(0, size):
-		count[(array[i] // place) % 10] += 1
-		for i in range(1, 10):
-		count[i] += count[i - 1]
-		i = size - 1
-		while i >= 0:
-		index = array[i] // place
-		output[count[index % 10] - 1] = array[i]
-		count[index % 10] -= 1
-		i -= 1
-		for i in range(0, size):
-		array[i] = output[i]
+	\begin{lstlisting}[label=lst:bst_sort,caption=Алгоритм сортировки бинарным деревом]
+class BSTree:
+	def __init__(self):
+		self.root = None
+	
+	def __str__(self):
+		rootStr = self.root.toString()[:-2]
+		return "[" + rootStr + "]"
+	
+	def inorder(self):
+		if self.root is not None:
+			self.root.inorder()
+	
+	def add(self, key):
+		new_node = BSTNode(key)
+		if self.root is None:
+			self.root = new_node
+		else:
+			self.root.insert(new_node)
+
+def bstSort(data, n):
+	bstree = BSTree()
+	for x in data:
+		bstree.add(x)
+	return bstree
 	\end{lstlisting}
 \end{center}
 
 \section{Функциональные тесты}
 
-В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы сортировки. Тесты \textit{для всех сортировок} пройдены успешно.
+В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы сортировки. Тесты для всех сортировок пройдены \textit{успешно}.
+\clearpage
 
 
 \begin{table}[h]
@@ -118,4 +133,4 @@ def countingSort(array, size, place):
 
 \section*{Вывод}
 
-Были разработаны схемы всех трех алгоритмов сортировки. Для каждого алгоритма была вычислена трудоёмкость и оценены лучший и худший случаи.
+Были разработаны схемы всех трех алгоритмов сортировки. Для каждого алгоритма была вычислена трудоёмкость и оценены лучший и худший случаи трудоёмкости.

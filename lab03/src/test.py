@@ -31,8 +31,8 @@ def testSorts():
     fig1 = plt.figure(figsize=(10, 7))
     plot = fig1.add_subplot()
     plot.plot(sizes, pancakeSortTime, label = "Блинная сортировка")
-    plot.plot(sizes, radixSortTime, label="Поразрядная сортировка")
-    plot.plot(sizes, bstSortTime, label="Сортировка бинарным деревом")
+    plot.plot(sizes, radixSortTime, ":", label="Поразрядная сортировка")
+    plot.plot(sizes, bstSortTime, "--", label="Сортировка бинарным деревом")
 
     plt.legend()
     plt.grid()
