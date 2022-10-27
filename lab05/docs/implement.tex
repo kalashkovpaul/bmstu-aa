@@ -1,0 +1,136 @@
+\chapter{Технологическая часть}
+
+В данном разделе будут рассмотрены средства реализации, а также представлены листинги реализаций рассматриваемых сортировок.
+
+\section{Средства реализации}
+В данной работе для реализации был выбран язык программирования $Python$ \cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
+и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
+
+Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time$ \cite{python-lang-time}.
+
+\section{Сведения о модулях программы}
+Программа состоит из шести модулей:
+\begin{enumerate}[label=\arabic*)]
+	\item $main.py$ -- файл, содержащий точку входа;
+	\item $menu.py$ -- файл, содержащий код меню программы;
+	\item $test.py$ -- файл, содержаший код тестирования алгоритмов;
+	\item $utils.py$ -- файл, содержащий служебные алгоритмы;
+	\item $constants.py$ -- файл, содержаший константы программы;
+	\item $algorythms.py$ -- файл, содержащий код всех алгоритмов. \newline
+\end{enumerate}
+
+
+\section{Реализации алгоритмов}
+
+В листингах \ref{lst:pancake_sort}, \ref{lst:radix_sort}, \ref{lst:counting_sort}, \ref{lst:bst_sort} представлены реализации алгоритмов сортировок (блинной, поразрядной, подсчётом и бинарным деревом). \clearpage
+
+\begin{center}
+    \captionsetup{justification=raggedright,singlelinecheck=off}
+    \begin{lstlisting}[label=lst:pancake_sort,caption=Алгоритм блинной сортировки]
+	def pancakeSort(data, size):
+		if size > 1:
+			for currentSize in range(size, 1, -1):
+				maxIndex = max(range(currentSize), key = data.__getitem__)
+				if maxIndex + 1 != currentSize:
+					if maxIndex != 0:
+						data[:maxIndex + 1] = reversed(data[:maxIndex + 1])
+					data[:currentSize] = reversed(data[:currentSize])
+		return data
+	\end{lstlisting}
+\end{center}
+
+\begin{center}
+\captionsetup{justification=raggedright,singlelinecheck=off}
+\begin{lstlisting}[label=lst:radix_sort,caption=Алгоритм поразрядной сортировки]
+def radixSort(data, size):
+	maxElement = max(data)
+	place = 1
+	while maxElement // place > 0:
+		countingSort(data, size, place)
+		place *= 10
+	return data
+\end{lstlisting}
+\end{center}
+
+
+\begin{center}
+\captionsetup{justification=raggedright,singlelinecheck=off}
+\begin{lstlisting}[label=lst:counting_sort,caption=Алгоритм сортировки подсчётом]
+def countingSort(array, size, place):
+	output = [0] * size
+	count = [0] * 10
+	for i in range(0, size):
+		count[(array[i] // place) % 10] += 1
+	for i in range(1, 10):
+		count[i] += count[i - 1]
+		i = size - 1
+	while i >= 0:
+		index = array[i] // place
+		output[count[index % 10] - 1] = array[i]
+		count[index % 10] -= 1
+		i -= 1
+	for i in range(0, size):
+		array[i] = output[i]
+\end{lstlisting}
+\end{center}
+
+\begin{center}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:bst_sort,caption=Алгоритм сортировки бинарным деревом]
+class BSTree:
+	def __init__(self):
+		self.root = None
+	
+	def __str__(self):
+		rootStr = self.root.toString()[:-2]
+		return "[" + rootStr + "]"
+	
+	def inorder(self):
+		if self.root is not None:
+			self.root.inorder()
+	
+	def add(self, key):
+		new_node = BSTNode(key)
+		if self.root is None:
+			self.root = new_node
+		else:
+			self.root.insert(new_node)
+
+def bstSort(data, n):
+	bstree = BSTree()
+	for x in data:
+		bstree.add(x)
+	return bstree
+	\end{lstlisting}
+\end{center}
+
+\section{Функциональные тесты}
+
+В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы сортировки. Тесты для всех сортировок пройдены \textit{успешно}.
+\clearpage
+
+
+\begin{table}[h]
+	\begin{center}
+		\begin{threeparttable}
+		\captionsetup{justification=raggedleft,singlelinecheck=off}
+		\caption{\label{tbl:functional_test} Функциональные тесты}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Входной массив & Ожидаемый результат & Результат \\ 
+			\hline
+			$[1, 2, 3, 4, 5]$ & $[1, 2, 3, 4, 5]$  & $[1, 2, 3, 4, 5]$\\
+			$[5, 4, 3, 2, 1]$  & $[1, 2, 3, 4, 5]$ & $[1, 2, 3, 4, 5]$\\
+			$[9, 7, 5, 1, 4]$  & $[1, 4, 5, 7, 9]$  & $[1, 4, 5, 7, 9]$\\
+			$[5]$  & $[5]$  & $[5]$\\
+			$[]$  & $[]$  & $[]$\\
+			\hline
+		\end{tabular}
+    \end{threeparttable}
+	\end{center}
+\end{table}
+
+
+\section*{Вывод}
+
+Были разработаны схемы всех трех алгоритмов сортировки. Для каждого алгоритма была вычислена трудоёмкость и оценены лучший и худший случаи трудоёмкости.

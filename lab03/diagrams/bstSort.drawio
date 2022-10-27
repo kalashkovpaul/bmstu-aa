@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="aUnT7LFseOe2xe_AJLDL" name="Страница 1">
-        <mxGraphModel dx="2580" dy="1680" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="44" dy="29" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -31,13 +31,13 @@
                 <mxCell id="103" value="i = 0, bstree - двоичное&amp;nbsp;&lt;br&gt;дерево поиска" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
                     <mxGeometry x="313.75" y="190" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="128" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="105" target="127">
+                <mxCell id="128" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="105" target="127" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="105" value="Пока i &amp;lt; size" style="shape=loopLimit;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="313.75" y="265" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="130" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="111" target="23">
+                <mxCell id="130" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=none;endFill=0;" parent="1" source="111" target="23" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="111" value="" style="shape=loopLimit;whiteSpace=wrap;html=1;rotation=-180;" parent="1" vertex="1">
@@ -46,76 +46,79 @@
                 <mxCell id="112" value="i += 1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="363.75" y="440" width="50" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="129" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="127" target="111">
+                <mxCell id="129" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="127" target="111" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="127" value="addToBST(bstree, data[i])" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rotation=0;" vertex="1" parent="1">
+                <mxCell id="127" value="addToBST(bstree, data[i])" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="313.75" y="345" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="148" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=25;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="131" target="134">
+                <mxCell id="148" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=25;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="131" target="134" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="131" value="addToBST" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                <mxCell id="158" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.459;entryY=1.002;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;dashed=1;" edge="1" parent="1" source="131" target="132">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="131" value="addToBST" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
                     <mxGeometry x="310" y="660" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="132" value="" style="shape=partialRectangle;whiteSpace=wrap;html=1;bottom=1;right=1;left=1;top=0;fillColor=none;routingCenterX=-0.5;rotation=90;" vertex="1" parent="1">
+                <mxCell id="132" value="" style="shape=partialRectangle;whiteSpace=wrap;html=1;bottom=1;right=1;left=1;top=0;fillColor=none;routingCenterX=-0.5;rotation=90;" parent="1" vertex="1">
                     <mxGeometry x="460" y="660" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="133" value="Функция добавления&lt;br&gt;эллемента в бинарное&lt;br&gt;дерево поиска&lt;br&gt;&lt;br&gt;Вход: бинарное дерево&amp;nbsp;&lt;br&gt;поиска bstree, добавляемый&lt;br&gt;элемент elem" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="1">
-                    <mxGeometry x="490" y="640" width="180" height="100" as="geometry"/>
+                <mxCell id="133" value="Функция добавления&lt;br&gt;элемента в бинарное&lt;br&gt;дерево поиска&lt;br&gt;&lt;br&gt;Вход: бинарное дерево&amp;nbsp;&lt;br&gt;поиска bstree, добавляемый&lt;br&gt;элемент elem" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="495" y="639" width="171" height="102" as="geometry"/>
                 </mxCell>
-                <mxCell id="152" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="134" target="136">
+                <mxCell id="152" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="134" target="136" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="205" y="765"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="153" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="134" target="135">
+                <mxCell id="153" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="134" target="135" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="555" y="765"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="134" value="bstree.key &amp;lt; elem" style="rhombus;whiteSpace=wrap;html=1;rotation=0;" vertex="1" parent="1">
+                <mxCell id="134" value="bstree.key &amp;lt; elem" style="rhombus;whiteSpace=wrap;html=1;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="310" y="740" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="150" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="135" target="137">
+                <mxCell id="150" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="135" target="137" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="445" y="835"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="151" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="135" target="143">
+                <mxCell id="151" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="135" target="143" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="655" y="835"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="135" value="bstree.right.key = null?" style="rhombus;whiteSpace=wrap;html=1;rotation=0;" vertex="1" parent="1">
+                <mxCell id="135" value="bstree.right.key = null?" style="rhombus;whiteSpace=wrap;html=1;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="480" y="810" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="147" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;rounded=0;" edge="1" parent="1" source="136" target="138">
+                <mxCell id="147" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;rounded=0;" parent="1" source="136" target="138" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="95" y="835"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="149" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" edge="1" parent="1" source="136" target="140">
+                <mxCell id="149" style="edgeStyle=none;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=1;" parent="1" source="136" target="140" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="305" y="835"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="136" value="bstree.left.key = null?" style="rhombus;whiteSpace=wrap;html=1;rotation=0;" vertex="1" parent="1">
+                <mxCell id="136" value="bstree.left.key = null?" style="rhombus;whiteSpace=wrap;html=1;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="130" y="810" width="150" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="157" style="edgeStyle=none;rounded=0;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=block;endFill=1;" edge="1" parent="1" target="144">
+                <mxCell id="157" style="edgeStyle=none;rounded=0;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=block;endFill=1;" parent="1" target="144" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="560" y="960" as="sourcePoint"/>
                         <Array as="points">
@@ -124,10 +127,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="137" value="addToBST(bstree.right, elem)" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" vertex="1" parent="1">
+                <mxCell id="137" value="addToBST(bstree.right, elem)" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="380" y="880" width="130" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="154" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="138" target="140">
+                <mxCell id="154" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="138" target="140" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="95" y="960"/>
@@ -136,10 +139,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="138" value="addToBST(bstree.left, elem)" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" vertex="1" parent="1">
+                <mxCell id="138" value="addToBST(bstree.left, elem)" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="30" y="880" width="130" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="155" style="edgeStyle=none;rounded=0;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=block;endFill=1;" edge="1" parent="1" target="144">
+                <mxCell id="155" style="edgeStyle=none;rounded=0;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-25;entryPerimeter=0;endArrow=block;endFill=1;" parent="1" target="144" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="200" y="960" as="sourcePoint"/>
                         <Array as="points">
@@ -148,10 +151,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="140" value="bstree.left.key = elem" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" vertex="1" parent="1">
+                <mxCell id="140" value="bstree.left.key = elem" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="240" y="880" width="130" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="156" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="143" target="137">
+                <mxCell id="156" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="143" target="137" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="655" y="960"/>
@@ -159,11 +162,20 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="143" value="bstree.right.key = elem" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" vertex="1" parent="1">
+                <mxCell id="143" value="bstree.right.key = elem" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" parent="1" vertex="1">
                     <mxGeometry x="590" y="880" width="130" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="144" value="Конец" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                <mxCell id="144" value="Конец" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
                     <mxGeometry x="306.25" y="1040" width="157.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="159" value="Да" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="749" width="25" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="160" value="Да" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="817" width="25" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="162" value="Да" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="277" y="817" width="25" height="18" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
