@@ -1,136 +1,234 @@
 \chapter{Технологическая часть}
 
-В данном разделе будут рассмотрены средства реализации, а также представлены листинги реализаций рассматриваемых сортировок.
+В данном разделе будут рассмотрены средства реализации, а также представлены листинги линейной и конвейрной орбаботок матрицы.
+
 
 \section{Средства реализации}
-В данной работе для реализации был выбран язык программирования $Python$ \cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
+В данной работе для реализации был выбран язык программирования $C++$ \cite{cpp-lang}. В текущей лабораторной работе требуется замерить время работы выполняемой программы
 и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
 
-Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time$ \cite{python-lang-time}.
+Построение графиков и функциональное тестирование было осуществлено при помощи языка программирования $Python$ \cite{python-lang}.
+
+Время замерено с помощью \textit{std::chrono::system\_clock::now(...)} --- функции из библиотеки $chrono$ \cite{cpp-lang-chrono}.
+
 
 \section{Сведения о модулях программы}
-Программа состоит из шести модулей:
+Программа состоит из пяти модулей:
 \begin{enumerate}[label=\arabic*)]
-	\item $main.py$ -- файл, содержащий точку входа;
-	\item $menu.py$ -- файл, содержащий код меню программы;
-	\item $test.py$ -- файл, содержаший код тестирования алгоритмов;
-	\item $utils.py$ -- файл, содержащий служебные алгоритмы;
-	\item $constants.py$ -- файл, содержаший константы программы;
-	\item $algorythms.py$ -- файл, содержащий код всех алгоритмов. \newline
+	\item $main.cpp$ --- файл, содержащий точку входа;
+	\item $conway$ --- модуль, содержащий код линейной и конвейерной обработок;
+	\item $matrix$ --- модуль, содержаший код функций обработки матрицы;
+	\item $menu$ --- модуль, содержащий алгоритм меню;
+	\item $utils$ --- модуль, содержащий служебные алгоритмы. 
 \end{enumerate}
 
 
 \section{Реализации алгоритмов}
 
-В листингах \ref{lst:pancake_sort}, \ref{lst:radix_sort}, \ref{lst:counting_sort}, \ref{lst:bst_sort} представлены реализации алгоритмов сортировок (блинной, поразрядной, подсчётом и бинарным деревом). \clearpage
+В листингах \ref{lst:parse_linear}--\ref{lst:stage3} представлены реализации алгоритмов линейной и конвейерной обработок матрицы, а также алгоритмы запуска трёх потоков (для нахождения среднего арифметического значений матрицы, для нахождения максимального элемента и для заполнения матрицы соответственно).
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:pancake_sort,caption=Алгоритм блинной сортировки]
-	def pancakeSort(data, size):
-		if size > 1:
-			for currentSize in range(size, 1, -1):
-				maxIndex = max(range(currentSize), key = data.__getitem__)
-				if maxIndex + 1 != currentSize:
-					if maxIndex != 0:
-						data[:maxIndex + 1] = reversed(data[:maxIndex + 1])
-					data[:currentSize] = reversed(data[:currentSize])
-		return data
+    \begin{lstlisting}[label=lst:parse_linear,caption=Алгоритм линейной обработки матрицы]
+	void parseLinear(int count, size_t size, bool needPrinting) {
+		currentTime = 0;
+		std::queue<matrix_t> q1;
+		std::queue<matrix_t> q2;
+		std::queue<matrix_t> q3;
+		
+		queues_t queues = {.q1 = q1, .q2 = q2, .q3 = q3};
+		
+		for (int i = 0; i < count; i++) {
+			matrix_t res = generateMatrix(size);
+			
+			queues.q1.push(res);
+		}
+		
+		for (int i = 0; i < count; i++) {
+			matrix_t matrix = queues.q1.front();
+			stage1Linear(matrix, i + 1, needPrinting);
+			queues.q1.pop();
+			queues.q2.push(matrix);
+			
+			matrix = queues.q2.front();
+			stage2Linear(matrix, i + 1, needPrinting);
+			queues.q2.pop();
+			queues.q3.push(matrix);
+			
+			matrix = queues.q3.front();
+			stage3Linear(matrix, i + 1, needPrinting);
+			queues.q3.pop();
+		}
+	}
+	
 	\end{lstlisting}
 \end{center}
+\clearpage
 
 \begin{center}
 \captionsetup{justification=raggedright,singlelinecheck=off}
-\begin{lstlisting}[label=lst:radix_sort,caption=Алгоритм поразрядной сортировки]
-def radixSort(data, size):
-	maxElement = max(data)
-	place = 1
-	while maxElement // place > 0:
-		countingSort(data, size, place)
-		place *= 10
-	return data
+\begin{lstlisting}[label=lst:parse_parallel,caption=Алгоритм конвейерной обработки матрицы]
+void parseParallel(int count, size_t size, bool needPrinting) {
+	t1.resize(count + 1);
+	t2.resize(count + 1);
+	t3.resize(count + 1);
+	
+	for (int i = 0; i < count + 1; i++) {
+		t1[i] = 0;
+		t2[i] = 0;
+		t3[i] = 0;
+	}
+	
+	std::queue<matrix_t> q1;
+	std::queue<matrix_t> q2;
+	std::queue<matrix_t> q3;
+	
+	queues_t queues = {.q1 = q1, .q2 = q2, .q3 = q3};
+	
+	
+	for (int i = 0; i < count; i++) {
+		matrix_t res = generateMatrix(size);
+		q1.push(res);
+	}
+	
+	std::thread threads[THREADS];
+	
+	threads[0] = std::thread(stage1Parallel, std::ref(q1), std::ref(q2), std::ref(q3), needPrinting);
+	threads[1] = std::thread(stage2Parallel, std::ref(q1), std::ref(q2), std::ref(q3), needPrinting);
+	threads[2] = std::thread(stage3Parallel, std::ref(q1), std::ref(q2), std::ref(q3), needPrinting);
+	
+	for (int i = 0; i < THREADS; i++) {
+		threads[i].join();
+	}
+}
 \end{lstlisting}
 \end{center}
-
+\clearpage
 
 \begin{center}
 \captionsetup{justification=raggedright,singlelinecheck=off}
-\begin{lstlisting}[label=lst:counting_sort,caption=Алгоритм сортировки подсчётом]
-def countingSort(array, size, place):
-	output = [0] * size
-	count = [0] * 10
-	for i in range(0, size):
-		count[(array[i] // place) % 10] += 1
-	for i in range(1, 10):
-		count[i] += count[i - 1]
-		i = size - 1
-	while i >= 0:
-		index = array[i] // place
-		output[count[index % 10] - 1] = array[i]
-		count[index % 10] -= 1
-		i -= 1
-	for i in range(0, size):
-		array[i] = output[i]
+\begin{lstlisting}[label=lst:stage1,caption=Алгоритм запуска 1 потока для нахождения среднего арифметического элементов матрицы]
+void stage1Parallel(std::queue<matrix_t> &q1, std::queue<matrix_t> &q2, std::queue<matrix_t> &q3, bool needPrinting) {
+	
+	int task = 1;
+	std::mutex m;
+	while(!q1.empty()) {
+		m.lock();
+		matrix_t matrix = q1.front();
+		m.unlock();
+		
+		logConway(matrix, task++, 1, getAverage, needPrinting);
+		
+		m.lock();
+		q2.push(matrix);
+		q1.pop();
+		m.unlock();
+	}
+}
 \end{lstlisting}
 \end{center}
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:bst_sort,caption=Алгоритм сортировки бинарным деревом]
-class BSTree:
-	def __init__(self):
-		self.root = None
+	\begin{lstlisting}[label=lst:stage2,caption=Алгоритм запуска 2 потока для нахождения максимального элемента матрицы, часть 1]
+void stage2Parallel(std::queue<matrix_t> &q1, std::queue<matrix_t> &q2, std::queue<matrix_t> &q3, bool needPrinting) {
 	
-	def __str__(self):
-		rootStr = self.root.toString()[:-2]
-		return "[" + rootStr + "]"
-	
-	def inorder(self):
-		if self.root is not None:
-			self.root.inorder()
-	
-	def add(self, key):
-		new_node = BSTNode(key)
-		if self.root is None:
-			self.root = new_node
-		else:
-			self.root.insert(new_node)
-
-def bstSort(data, n):
-	bstree = BSTree()
-	for x in data:
-		bstree.add(x)
-	return bstree
+	int task = 1;
+	std::mutex m;
+	do {
+		m.lock();
+		bool is_q2empty = q2.empty();
+		m.unlock();
+		
+		if (!is_q2empty) {
+			m.lock();
+			matrix_t matrix = q2.front();
+			m.unlock();
+			
+			logConway(matrix, task++, 2, getMax, needPrinting);
 	\end{lstlisting}
 \end{center}
 
-\section{Функциональные тесты}
+\begin{center}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:stage2,caption=Алгоритм запуска 2 потока для нахождения максимального элемента матрицы, часть 2]
+			m.lock();
+			q3.push(matrix);
+			q2.pop();
+			m.unlock();
+		}
+	} while (!q1.empty() || !q2.empty());
+}
+	\end{lstlisting}
+\end{center}
 
-В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы сортировки. Тесты для всех сортировок пройдены \textit{успешно}.
+\begin{center}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:stage3,caption=Алгоритм запуска 3 потока для заполнения матрицы вычисленными значениями]
+void stage3Parallel(std::queue<matrix_t> &q1, std::queue<matrix_t> &q2, std::queue<matrix_t> &q3, bool needPrinting) {
+	
+	int task = 1;
+	std::mutex m;
+	
+	do {
+		m.lock();
+		bool is_q3empty = q3.empty();
+		m.unlock();
+		
+		if (!is_q3empty) {
+			m.lock();
+			matrix_t matrix = q3.front();
+			m.unlock();
+			
+			logConway(matrix, task++, 3, fillMatrix, needPrinting);
+			
+			m.lock();
+			q3.pop();
+			m.unlock();
+		}
+	} while (!q1.empty() || !q2.empty() || !q3.empty());
+}
+	\end{lstlisting}
+\end{center}
 \clearpage
 
+\section{Функциональные тесты}
+
+В таблице \ref{tbl:functional_test} приведены тесты для функций программы. Тесты \textit{для всех функций} пройдены успешно.
 
 \begin{table}[h]
 	\begin{center}
 		\begin{threeparttable}
-		\captionsetup{justification=raggedleft,singlelinecheck=off}
-		\caption{\label{tbl:functional_test} Функциональные тесты}
-		\begin{tabular}{|c|c|c|}
-			\hline
-			Входной массив & Ожидаемый результат & Результат \\ 
-			\hline
-			$[1, 2, 3, 4, 5]$ & $[1, 2, 3, 4, 5]$  & $[1, 2, 3, 4, 5]$\\
-			$[5, 4, 3, 2, 1]$  & $[1, 2, 3, 4, 5]$ & $[1, 2, 3, 4, 5]$\\
-			$[9, 7, 5, 1, 4]$  & $[1, 4, 5, 7, 9]$  & $[1, 4, 5, 7, 9]$\\
-			$[5]$  & $[5]$  & $[5]$\\
-			$[]$  & $[]$  & $[]$\\
-			\hline
-		\end{tabular}
-    \end{threeparttable}
+			\captionsetup{justification=raggedright,singlelinecheck=off}
+			\caption{\label{tbl:functional_test} Функциональные тесты}
+			\begin{tabular}{|c|c|c|c|}
+				\hline
+				Алгоритм & \begin{tabular}{c}
+					Кол-во \\
+					 матриц 
+					\end{tabular}& \begin{tabular}{c}
+					Размер \\
+					матриц 
+				\end{tabular}& Ожидаемый результат \\
+				\hline
+				Конвейерная & -5 & 500 & Сообщение об ошибке \\
+				\hline
+				Конвейерная & 10 & -23 & Сообщение об ошибке \\
+				\hline
+				Линейная & 50 & 1500 & Вывод лога работы программы \\
+				\hline
+				Конвейерная & 10 & 100 & Вывод лога работы программы \\
+				\hline
+				Конвейерная & 5 & 10 & Вывод лога работы программы \\
+				\hline
+			\end{tabular}
+		\end{threeparttable}
 	\end{center}
 \end{table}
 
 
 \section*{Вывод}
 
-Были разработаны схемы всех трех алгоритмов сортировки. Для каждого алгоритма была вычислена трудоёмкость и оценены лучший и худший случаи трудоёмкости.
+Были представлены листинги всех алгоритмов линейной и конвейерной обработки матриц. 
+Также в данном разделе была приведена информация о выбранных средствах для разработки алгоритмов и сведения о модулях программы, проведено функциональное тестирование.
+
