@@ -62,6 +62,6 @@ def testAlgorithms() -> None:
     plt.grid()
     plt.title("Временные характеристики" + graphText)
     plt.ylabel("Затраченное время (с)")
-    plt.xlabel("Размер")
+    plt.xlabel("Размер матрицы")
 
     plt.show()
