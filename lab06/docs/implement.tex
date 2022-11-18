@@ -1,155 +1,203 @@
 \chapter{Технологическая часть}
 
-В данном разделе будут рассмотрены средства реализации, а также представлены листинги реализаций рассматриваемых сортировок.
+В данном разделе будут рассмотрены средства реализации, а также представлены листинги алгоритма полного перебора путей и муравьиного алгоритма.
 
 \section{Средства реализации}
-В данной работе для реализации был выбран язык программирования $C++$ \cite{cpp-lang}. В текущей лабораторной работе требуется замерить время работы выполняемой программы
+В данной работе для реализации был выбран язык программирования $Python$ \cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
 и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
 
-Построение графиков и функциональное тестирование было осуществлено при помощи языка программирования $Python$ \cite{python-lang}, нагрузочное тестирование и замеры времени при помощи утилиты $wrk$ \cite{wrk}.
+Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time$ \cite{python-lang-time}.
 
 \section{Сведения о модулях программы}
 Программа состоит из шести модулей:
 \begin{enumerate}[label=\arabic*)]
-	\item $main$ -- файл, содержащий точку входа;
-	\item $Server$ -- модуль, содержащий реализацию сервера;
-	\item $utils$ -- модуль, содержащий служебные алгоритмы;
-	\item $constants.hpp$ -- файл, содержаший константы программы;
-	\item $responses.hpp$ -- файл, содержащий шаблоны ответов. \newline
+	\item $main.py$ --- файл, содержащий точку входа;
+	\item $menu.py$ --- файл, содержащий код меню программы;
+	\item $test.py$ --- файл, содержаший код тестирования алгоритмов;
+	\item $utils.py$ --- файл, содержащий служебные алгоритмы;
+	\item $constants.py$ --- файл, содержаший константы программы;
+	\item $algorythms.py$ --- файл, содержащий код всех алгоритмов. 
 \end{enumerate}
 
 
 \section{Реализации алгоритмов}
 
-В листингах \ref{lst:server_header}, \ref{lst:server_run}, \ref{lst:server_handle} представлена реализация алгоритмов создания пула потоков, помещения запросов в очередь и обработки запроса в потоке\clearpage
+В листинге \ref{lst:full_comb} представлен алгоритм полного перебора путей, а в листингах \ref{lst:ant_alg}-\ref{lst:upd_pher} - муравьиный алгоритм и дополнительные к нему функции.
+
+\clearpage
 
 \begin{center}
-    \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:server_header,caption=Заголовочный файл реализации сервера, включающий в себя создание пула потоков]
-class Server {
-	public:
-	Server() = delete;
-	
-	explicit Server(size_t poolSize = POOL_SIZE, int port = PORT, int countConn = CONN_COUNT)
-	:poolSize(poolSize), serverPort(port), queueConnections(CONN_COUNT) {
-		this->serverSocket = 0, this->clientSocket =  0;
-		memset(&this->serverAddress, 0, sizeof(struct sockaddr_in));
-		memset(&this->clientAddress, 0, sizeof(struct sockaddr_in));
-		this->threadPool.resize(this->poolSize);
-		for(size_t i = 0; i < this->poolSize; i++) {
-			this->threadPool[i] = std::thread([this](){this->handleRequest();});
-		}
-	};
-	
-	int init();
-	void run();
-	
-	private:
-	int serverSocket;
-	int clientSocket;
-	struct sockaddr_in serverAddress;
-	struct sockaddr_in clientAddress;
-	int serverPort;
-	
-	std::vector<std::thread> threadPool;
-	size_t poolSize;
-	std::queue<int> requestQueue;
-	
-	int queueConnections;
-	std::mutex queueMutex;
-	std::condition_variable cv;
-	
-	void handleRequest();
-	int loadConfig();
-};
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:full_comb,caption=Алгоритм полного перебора путей]
+		def fullCombinationAlg(matrix, size):
+			places = np.arange(size)
+			placesCombinations = list()
+			
+			for combination in it.permutations(places):
+				combArr = list(combination)
+				placesCombinations.append(combArr)
+			
+			minDist = float("inf")
+			
+			for i in range(len(placesCombinations)):
+				placesCombinations[i].append(placesCombinations[i][0])
+				curDist = 0
+				for j in range(size):
+					startCity = placesCombinations[i][j]
+					endCity = placesCombinations[i][j + 1]
+					curDist += matrix[startCity][endCity]
+				
+				if (curDist < minDist):
+					minDist = curDist
+					bestWay = placesCombinations[i]
+			
+			return minDist, bestWay
 	\end{lstlisting}
 \end{center}
 
+\clearpage
+
 \begin{center}
-\captionsetup{justification=raggedright,singlelinecheck=off}
-\begin{lstlisting}[label=lst:server_run,caption=Запуск сервера и алгоритм помещения запросов в очередь]
-void Server::run() {
-	while (true) {
-		socklen_t addr_size = sizeof(this->clientAddress);
-		this->clientSocket = accept(serverSocket, (struct sockaddr *) &this->clientAddress, &addr_size);
-		char peerIP[INET_ADDRSTRLEN] = {0};
-		if (inet_ntop(AF_INET, &this->clientAddress.sin_addr, peerIP, sizeof(peerIP))) {
-			std::cout << "Accepted connection with " << peerIP << "\n";
-		} else {
-			return;
-		}
-		this->queueMutex.lock();
-		this->requestQueue.push(clientSocket);
-		this->cv.notify_one();
-		this->queueMutex.unlock();
-	}
-}
-\end{lstlisting}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:ant_alg,caption=Муравьиный алгоритм]
+	def antAlgorithm(matrix, places, alpha, beta, k_evaporation, days):
+		q = calcQ(matrix, places)
+		bestWay = []
+		minDist = float("inf")
+		pheromones = calcPheromones(places)
+		visibility = calcVisibility(matrix, places)
+		ants = places
+		for day in range(days):
+			route = np.arange(places)
+			visited = calcVisitedPlaces(route, ants)
+			for ant in range(ants):
+				while (len(visited[ant]) != ants):
+					pk = findWays(pheromones, visibility, visited, places, ant, alpha, beta)
+					chosenPlace = chooseNextPlaceByPosibility(pk)
+					visited[ant].append(chosenPlace - 1)
+				
+				visited[ant].append(visited[ant][0])
+				
+				curLength = calcLength(matrix, visited[ant])
+				
+				if (curLength < minDist):
+					minDist = curLength
+					bestWay = visited[ant]
+				
+			pheromones = updatePheromones(matrix, places, visited, pheromones, q, k_evaporation)
+		
+		return minDist, bestWay
+	\end{lstlisting}
+\end{center}
+
+
+\clearpage
+
+
+\begin{center}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:prob_arr,caption=Алгоритм нахождения массива вероятностных переходов в непосещенные города]
+def findWays(pheromones, visibility, visited, places, ant, alpha, beta):
+	pk = [0] * places
+	
+	for place in range(places):
+		if place not in visited[ant]:
+			ant_place = visited[ant][-1]
+			pk[place] = pow(pheromones[ant_place][place], alpha) * \
+			pow(visibility[ant_place][place], beta)
+		else:
+			pk[place] = 0
+	
+	sum_pk = sum(pk)
+	
+	for place in range(places):
+		pk[place] /= sum_pk
+	
+	return pk
+	\end{lstlisting}
+\end{center}
+
+\clearpage
+
+\begin{center}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:choose_next,caption=Алгоритм нахождения следующего города на основании рандома]
+def chooseNextPlaceByPosibility(pk):
+	posibility = random()
+	choice = 0
+	chosenPlace = 0
+	
+	while ((choice < posibility) and (chosenPlace < len(pk))):
+		choice += pk[chosenPlace]
+		chosenPlace += 1
+	
+	return chosenPlace
+	\end{lstlisting}
 \end{center}
 
 
 \begin{center}
-\captionsetup{justification=raggedright,singlelinecheck=off}
-\begin{lstlisting}[label=lst:server_handle,caption=Алгоритм обработки запроса в потоке]
-void Server::handleRequest() {
-	std::unique_lock<std::mutex> lock(this->queueMutex, std::defer_lock);
-	int client_socket = -1;
-	while (true) {
-		lock.lock();
-		this->cv.wait(lock, [this]() { return !this->requestQueue.empty(); });
-		client_socket = this->requestQueue.front();
-		this->requestQueue.pop();
-		lock.unlock();
-		char req[2 * REQ_SIZE];
-		recv(client_socket, req, sizeof(req), 0);
-		std::string reply = handle(req);
-		send(client_socket, reply.c_str(), reply.size(), 0);
-		close(client_socket);
-	}
-}
-\end{lstlisting}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:upd_pher,caption=Алгоритм обновления матрицы феромонов]
+	def updatePheromones(matrix, places, visited, pheromones, q, k_evaporation):
+		ants = places
+		
+		for i in range(places):
+			for j in range(places):
+				delta = 0
+				for ant in range(ants):
+					length = calcLength(matrix, visited[ant])
+					delta += q / length
+				
+				pheromones[i][j] *= (1 - k_evaporation)
+				pheromones[i][j] += delta
+				if (pheromones[i][j] < MIN_PHEROMONE):
+					pheromones[i][j] = MIN_PHEROMONE
+		
+		return pheromones
+	\end{lstlisting}
 \end{center}
 
 \section{Функциональные тесты}
 
-В таблице \ref{tbl:functional_test} приведены запросы для написанного сервера раздачи статической информации. Тесты для всех запросов пройдены \textit{успешно}.
+В таблице \ref{tbl:functional_test} приведены тесты для функций программы. Тесты \textit{для всех функций} пройдены успешно.
 
-\begin{table}[h]
 \begin{center}
-	\caption{\label{tbl:functional_test} Функциональные тесты}
-	\begin{tabular}{|c|c|}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{longtable}[c]{|c|c|c|c|c|}
+		\caption{Функциональные тесты\label{tbl:functional_test}} \\ \hline
+		Матрица смежности & Ожидаемый результат & Результат программы \\
 		\hline
-		Содержимое URL & Ожидаемый результат \\ 
+		$ \begin{pmatrix}
+			0 &  4 &  2 &  1 & 7 \\
+			4 &  0 &  3 &  7 & 2 \\
+			2 &  3 &  0 & 10 & 3 \\
+			1 &  7 & 10 &  0 & 9 \\
+			7 &  2 &  3 &  9 & 0
+		\end{pmatrix}$ &
+		15, [0, 2, 4, 1, 3, 0] &
+		15, [0, 2, 4, 1, 3, 0] \\
+		
+		$ \begin{pmatrix}
+			0 & 1 & 2 \\
+			1 & 0 & 1 \\
+			2 & 1 & 0	
+		\end{pmatrix}$ &
+		4, [0, 1, 2, 0] &
+		4, [0, 1, 2, 0] \\
+		
+		$ \begin{pmatrix}
+			0 & 15 & 19 & 20 \\
+			15 &  0 & 12 & 13 \\
+			19 & 12 &  0 & 17 \\
+			20 & 13 & 17 &  0
+		\end{pmatrix}$ &
+		64, [0, 1, 2, 3, 0] &
+		64, [0, 1, 2, 3, 0] \\
 		\hline
-		Пусто & Ответа нет\\
-		Заголовок HTTP1.1  & Ответа нет\\
-		/test  & Server \\
-		/test/dirToTest  & /test/dirToTest/index.html \\
-		/test/deep  & Статус 403\\
-		/test/blablabla.txt  & Статус 403\\
-		/test/deep/deeper/deepest/deep.txt & bingo, you found it\\
-		/test/dirToTest/page.html/ & Статус 404\\
-		/test/dirToTest/page.html?arg=val & Статус 404\\
-		\text{/test/s\%20p\%20a\%20c\%20e.txt} & s p a c e.txt \\
-		\text{/test/dirToTest/\%61\%2e\%68\%74\%6d\%6c} &  page.html \\
-		\text{/test/wikipedia\_russia.html} & Страница Википедии \\
-		/test/../../../../../../../../../../../../../etc/passwd & Статус 403 \\
-		/test/text..txt & text..txt \\
-%		POST: /test/dirToTest/page.html & 405 \\
-%		HEAD: /test/dirToTest/page.html & 405 \\
-		/test/dirToTest/page.html & page.html \\
-		/test/css.css & css.css \\
-		/test/js.js & js.js \\
-		/test/jpg.jpg & jpg.jpg \\
-		/test/jpeg.jpeg & jpeg.jpeg \\
-		/test/png.png & png.png \\
-		/test/gif.gif & gif.gif \\
-		/test/swf.swf & swf.swf \\
-		\hline
-	\end{tabular}
+	\end{longtable}
 \end{center}
-\end{table}
 
-\section*{Вывод}
+\section{Вывод}
 
-В данном разделе были выбраны средства реализации, представлены листинги реализаций алгоритмов создания пула потоков, помещения запросов в очередь и обработки запроса в потоке, а также рассмотрены запросы для функционального тестирования, которое для всех запросов проходит успешно.
+Были представлены листинги всех алгоритмов --- полного перебора и муравьиного. Также в данном разделе была приведена информации о выбранных средствах для разработки алгоритмов и сведения о модулях программы, проведено функциональное тестирование.

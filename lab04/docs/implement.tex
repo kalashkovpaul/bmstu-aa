@@ -9,7 +9,7 @@
 Построение графиков и функциональное тестирование было осуществлено при помощи языка программирования $Python$ \cite{python-lang}, нагрузочное тестирование и замеры времени при помощи утилиты $wrk$ \cite{wrk}.
 
 \section{Сведения о модулях программы}
-Программа состоит из шести модулей:
+Программа состоит из пяти модулей:
 \begin{enumerate}[label=\arabic*)]
 	\item $main$ -- файл, содержащий точку входа;
 	\item $Server$ -- модуль, содержащий реализацию сервера;
@@ -29,7 +29,7 @@
 class Server {
 	public:
 	Server() = delete;
-	
+
 	explicit Server(size_t poolSize = POOL_SIZE, int port = PORT, int countConn = CONN_COUNT)
 	:poolSize(poolSize), serverPort(port), queueConnections(CONN_COUNT) {
 		this->serverSocket = 0, this->clientSocket =  0;
@@ -40,25 +40,25 @@ class Server {
 			this->threadPool[i] = std::thread([this](){this->handleRequest();});
 		}
 	};
-	
+
 	int init();
 	void run();
-	
+
 	private:
 	int serverSocket;
 	int clientSocket;
 	struct sockaddr_in serverAddress;
 	struct sockaddr_in clientAddress;
 	int serverPort;
-	
+
 	std::vector<std::thread> threadPool;
 	size_t poolSize;
 	std::queue<int> requestQueue;
-	
+
 	int queueConnections;
 	std::mutex queueMutex;
 	std::condition_variable cv;
-	
+
 	void handleRequest();
 	int loadConfig();
 };
@@ -119,7 +119,7 @@ void Server::handleRequest() {
 	\caption{\label{tbl:functional_test} Функциональные тесты}
 	\begin{tabular}{|c|c|}
 		\hline
-		Содержимое URL & Ожидаемый результат \\ 
+		Содержимое URL & Ожидаемый результат \\
 		\hline
 		Пусто & Ответа нет\\
 		Заголовок HTTP1.1  & Ответа нет\\

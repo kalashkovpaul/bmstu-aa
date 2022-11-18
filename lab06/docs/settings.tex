@@ -77,6 +77,25 @@
 	\end{figure}
 }
 
+\usepackage{graphicx}
+\newcommand{\imgScale}[3] {
+	\begin{figure}[h!]
+		\center{\includegraphics[scale=#1]{img/#2}} % height
+		\caption{#3}
+		\label{img:#2}
+	\end{figure}
+}
+
+\usepackage{graphicx}
+\newcommand{\imgHeight}[3] {
+	\begin{figure}[h!]
+		\center{\includegraphics[height=#1]{img/#2}} % height
+		\caption{#3}
+		\label{img:#2}
+	\end{figure}
+}
+
+
 
 \usepackage[justification=centering]{caption} % Настройка подписей float объектов
 
@@ -86,4 +105,14 @@
 \usepackage{csvsimple}
 
 \newcommand{\code}[1]{\texttt{#1}}
+
+\usepackage{longtable}
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{floatrow}
+
+\floatsetup[longtable]{LTcapwidth=table}
+
+
 
