@@ -1,6 +1,6 @@
 \chapter{Технологическая часть}
 
-В данном разделе будут рассмотрены средства реализации, а также представлены листинги линейной и конвейрной орбаботок матрицы.
+В данном разделе будут рассмотрены средства реализации, а также представлены листинги линейной и конвейерной обработки матрицы.
 
 
 \section{Средства реализации}
@@ -130,7 +130,7 @@ void stage1Parallel(std::queue<matrix_t> &q1, std::queue<matrix_t> &q2, std::que
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:stage2,caption=Алгоритм запуска 2 потока для нахождения максимального элемента матрицы, часть 1]
+	\begin{lstlisting}[label=lst:stage2,caption=Алгоритм запуска 2 потока для нахождения максимального элемента матрицы (часть 1)]
 void stage2Parallel(std::queue<matrix_t> &q1, std::queue<matrix_t> &q2, std::queue<matrix_t> &q3, bool needPrinting) {
 	
 	int task = 1;
@@ -151,7 +151,7 @@ void stage2Parallel(std::queue<matrix_t> &q1, std::queue<matrix_t> &q2, std::que
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:stage2,caption=Алгоритм запуска 2 потока для нахождения максимального элемента матрицы, часть 2]
+	\begin{lstlisting}[label=lst:stage2,caption=Алгоритм запуска 2 потока для нахождения максимального элемента матрицы (часть 2)]
 			m.lock();
 			q3.push(matrix);
 			q2.pop();
@@ -230,5 +230,5 @@ void stage3Parallel(std::queue<matrix_t> &q1, std::queue<matrix_t> &q2, std::que
 \section*{Вывод}
 
 Были представлены листинги всех алгоритмов линейной и конвейерной обработки матриц. 
-Также в данном разделе была приведена информация о выбранных средствах для разработки алгоритмов и сведения о модулях программы, проведено функциональное тестирование.
+Также в данном разделе была приведена информация о выбранных для реализации алгоритмов средствах и сведения о модулях программы, проведено функциональное тестирование.
 
