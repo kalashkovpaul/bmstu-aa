@@ -6,7 +6,7 @@
 
 Технические характеристики устройства, на котором выполнялись замеры времени работы реализации алгоритма статической раздачи информации, представлены далее:
 
-\begin{itemize}
+\begin{itemize}[label=---]
 	\item операционная система Mac OS Monterey Версия 12.5.1 (21G83) \cite{macos} x86\_64;
 	\item память 16 ГБ;
 	\item четырёхъядерный процессор Intel Core i7 с тактовой частотой 2,7 ГГц \cite{intel}.
@@ -30,6 +30,7 @@
 \begin{table}[h]
 	\begin{center}
 		\begin{threeparttable}
+		\captionsetup{justification=raggedright,singlelinecheck=off}
 		\caption{Результаты нагрузочного тестирования}
 		\label{tbl:rps}
 		\begin{tabular}{|c|c|c|c|}
@@ -53,14 +54,14 @@
     \end{center}
 \end{table}
 
-На рисунке \ref{img:graph_rps} приведены графические результаты нагрузочного тестирования.
+На рисунке \ref{img:graph} приведены графические результаты нагрузочного тестирования.
 
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=120mm]{graph_rps}
+		\includegraphics[width=120mm]{graph}
 	\end{center}
 	\caption{Результаты нагрузочного тестирования}
-	\label{img:graph_rps}
+	\label{img:graph}
 \end{figure}
 Таким образом, при увеличении числа открытых соединений до 200 в течении 30 секунд реализация с использованием 16 потоков одновременно оказалась более, чем в 6 раз эффективнее реализации с одним потоком, а с использованием 8 потоков -- почти в 3 раза эффективнее.
 

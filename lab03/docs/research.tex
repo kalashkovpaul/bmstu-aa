@@ -6,7 +6,7 @@
 
 Технические характеристики устройства, на котором выполнялись замеры времени работы реализации алгоритма статической раздачи информации, представлены далее:
 
-\begin{itemize}
+\begin{itemize}[label=---]
 	\item операционная система Mac OS Monterey Версия 12.5.1 (21G83) \cite{macos} x86\_64;
 	\item память 16 ГБ;
 	\item четырёхъядерный процессор Intel Core i7 с тактовой частотой 2,7 ГГц \cite{intel}.
@@ -16,7 +16,7 @@
 
 \section{Демонстрация работы программы}
 
-На рисунке \ref{img:example} представлен результат работы программы.
+На рисунке \ref{img:example} представлен пример работы программы: возможность выбрать тип сортировки, ввести сортируемые значения и посмотреть результат сортировки.
 
 \img{100mm}{example}{Пример работы программы}
 \clearpage
@@ -32,7 +32,7 @@
 \begin{table}[h]
 	\begin{center}
 		\begin{threeparttable}
-		\captionsetup{justification=raggedleft,singlelinecheck=off}
+		\captionsetup{justification=raggedright,singlelinecheck=off}
 		\caption{Результаты замеров реализаций сортировок, входными данными явллялись отсортированные по возрастанию значений массивы.}
 		\label{tbl:best}
 		\begin{tabular}{|c|c|c|c|}
@@ -64,7 +64,7 @@
 \begin{table}[h]
 	\begin{center}
 		\begin{threeparttable}
-		\captionsetup{justification=raggedleft,singlelinecheck=off}
+		\captionsetup{justification=raggedright,singlelinecheck=off}
 		\caption{Результаты замеров реализаций сортировок, входными данными явллялись отсортированные по убыванию значений массивы.}
 		\label{tbl:worth}
 		\begin{tabular}{|c|c|c|c|}
@@ -96,7 +96,7 @@
 \begin{table}[h]
 	\begin{center}
 		\begin{threeparttable}
-		\captionsetup{justification=raggedleft,singlelinecheck=off}
+		\captionsetup{justification=raggedright,singlelinecheck=off}
 		\caption{Результаты замеров реализаций сортировок, входными данными явллялись заполненные числами со случайными значениями массивы.}
 		\label{tbl:random}
 		\begin{tabular}{|c|c|c|c|}

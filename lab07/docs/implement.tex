@@ -1,6 +1,6 @@
 \chapter{Технологическая часть}
 
-В данном разделе будут рассмотрены средства реализации, а также представлены листинги алгоритма полного перебора путей и муравьиного алгоритма.
+В данном разделе будут рассмотрены средства реализации, а также представлены листинги алгоритма, осуществляющего полный перебор путей, и муравьиного алгоритма.
 
 \section{Средства реализации}
 В данной работе для реализации был выбран язык программирования $Python$ \cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
@@ -22,13 +22,13 @@
 
 \section{Реализации алгоритмов}
 
-В листинге \ref{lst:full_comb} представлен алгоритм полного перебора путей, а в листингах \ref{lst:ant_alg}-\ref{lst:upd_pher} - муравьиный алгоритм и дополнительные к нему функции.
+В листинге \ref{lst:full_comb} представлен алгоритм полного перебора путей, а в листингах \ref{lst:ant_alg}--\ref{lst:upd_pher} --- муравьиный алгоритм и дополнительные к нему функции.
 
 \clearpage
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:full_comb,caption=Алгоритм полного перебора путей]
+	\begin{lstlisting}[label=lst:full_comb,caption=Реализация алгоритма полного перебора путей]
 		def fullCombinationAlg(matrix, size):
 			places = np.arange(size)
 			placesCombinations = list()
@@ -40,7 +40,8 @@
 			minDist = float("inf")
 			
 			for i in range(len(placesCombinations)):
-				placesCombinations[i].append(placesCombinations[i][0])
+				placesCombinations[i].append(\
+				placesCombinations[i][0])
 				curDist = 0
 				for j in range(size):
 					startCity = placesCombinations[i][j]
@@ -59,7 +60,7 @@
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:ant_alg,caption=Муравьиный алгоритм]
+	\begin{lstlisting}[label=lst:ant_alg,caption=Реализация муравьиного алгоритма]
 	def antAlgorithm(matrix, places, alpha, beta, k_evaporation, days):
 		q = calcQ(matrix, places)
 		bestWay = []
@@ -96,7 +97,7 @@
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:prob_arr,caption=Алгоритм нахождения массива вероятностных переходов в непосещенные города]
+	\begin{lstlisting}[label=lst:prob_arr,caption=Реализация алгоритма нахождения массива вероятностей переходов в непосещенные города]
 def findWays(pheromones, visibility, visited, places, ant, alpha, beta):
 	pk = [0] * places
 	
@@ -117,11 +118,22 @@ def findWays(pheromones, visibility, visited, places, ant, alpha, beta):
 	\end{lstlisting}
 \end{center}
 
+\begin{center}
+	\captionsetup{justification=raggedright,singlelinecheck=off}
+	\begin{lstlisting}[label=lst:pheromone_above_Zero,caption=Реализация алгоритма нахождения массива вероятностей переходов в непосещенные города]
+def calcPheromones(size):
+min_phero = 1
+pheromones = [[min_phero for i in range(size)] for j in range(size)]
+return pheromones
+	\end{lstlisting}
+\end{center}
+
+
 \clearpage
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:choose_next,caption=Алгоритм нахождения следующего города на основании рандома]
+	\begin{lstlisting}[label=lst:choose_next,caption=Реализация алгоритма выбора следующего города]
 def chooseNextPlaceByPosibility(pk):
 	posibility = random()
 	choice = 0
@@ -138,7 +150,7 @@ def chooseNextPlaceByPosibility(pk):
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:upd_pher,caption=Алгоритм обновления матрицы феромонов]
+	\begin{lstlisting}[label=lst:upd_pher,caption=Реализация алгоритма обновления матрицы феромонов]
 	def updatePheromones(matrix, places, visited, pheromones, q, k_evaporation):
 		ants = places
 		
@@ -160,7 +172,7 @@ def chooseNextPlaceByPosibility(pk):
 
 \section{Функциональные тесты}
 
-В таблице \ref{tbl:functional_test} приведены тесты для функций программы. Тесты \textit{для всех функций} пройдены успешно.
+В таблице \ref{tbl:functional_test} приведены тесты для функций программы. Все функциональные тесты пройдены \textit{успешно}.
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
@@ -200,4 +212,4 @@ def chooseNextPlaceByPosibility(pk):
 
 \section{Вывод}
 
-Были представлены листинги всех алгоритмов --- полного перебора и муравьиного. Также в данном разделе была приведена информации о выбранных средствах для разработки алгоритмов и сведения о модулях программы, проведено функциональное тестирование.
+Были представлены листинги всех реализаций алгоритмов --- полного перебора и муравьиного. Также в данном разделе была приведена информации о выбранных средствах для разработки алгоритмов и сведения о модулях программы, проведено функциональное тестирование.

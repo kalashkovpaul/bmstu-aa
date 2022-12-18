@@ -3,18 +3,18 @@
 В данном разделе будут рассмотрены средства реализации, а также представлены листинги реализаций алгоритмов умножения матриц - стандартного, Винограда и оптимизированного алгоритма Винограда.
 
 \section{Средства реализации}
-В данной работе для реализации был выбран язык программирования $Python \cite{python-lang}$. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
+В данной работе для реализации был выбран язык программирования $Python$~\cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
 
-Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time \cite{python-lang-time}$.
+Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time$~\cite{python-lang-time}.
 
 
 \section{Реализации алгоритмов}
 
-В листингах \ref{lst:stand_alg}-\ref{lst:opt_vin_alg} представлены реализации алгоритмов умножения матриц -- стандартного, Винограда и оптимизированного алгоритма Винограда.
+В листингах \ref{lst:stand_alg}-\ref{lst:opt_vin_alg} представлены реализации алгоритмов умножения матриц --- стандартного, Винограда и оптимизированного алгоритма Винограда.
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:stand_alg,caption=Стандартный алгоритм умножения матриц]
+    \begin{lstlisting}[label=lst:stand_alg,caption=Реализация стандартного алгоритма умножения матриц]
 def stdAlg(matA: Matrix, matB: Matrix) -> Matrix:
 	if (len(matA[0]) != len(matB)):
 		return []
@@ -34,7 +34,7 @@ def stdAlg(matA: Matrix, matB: Matrix) -> Matrix:
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:vin_alg,caption=Алгоритм Винограда умножения матриц]
+    \begin{lstlisting}[label=lst:vin_alg,caption=Реализация алгоритма Винограда умножения матриц]
 def winAlg(matA: Matrix, matB: Matrix) -> Matrix:
 	if (len(matA[0]) != len(matB)):
 		return []
@@ -75,7 +75,7 @@ def winAlg(matA: Matrix, matB: Matrix) -> Matrix:
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:opt_vin_alg,caption=Оптимизированный алгоритм Винограда умножения матриц]
+    \begin{lstlisting}[label=lst:opt_vin_alg,caption=Реализация оптимизированного алгоритма Винограда умножения матриц]
 def optWinAlg(matA: Matrix, matB: Matrix) -> Matrix:
 	if (not len(matA) or len(matA[0]) != len(matB)):
 		return []
@@ -119,7 +119,7 @@ def optWinAlg(matA: Matrix, matB: Matrix) -> Matrix:
 
 \section{Функциональные тесты}
 
-В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы умножения матриц, рассматриваемых в данной лабораторной работе. Тесты для всех алгоритмов пройдены \textit{успешно}.
+В таблице \ref{tbl:functional_test} приведена методология тестирования функций, реализующих алгоритмы умножения матриц, рассматриваемых в данной лабораторной работе. Тесты для всех алгоритмов пройдены \textit{успешно}.
 
 
 \begin{table}[h]

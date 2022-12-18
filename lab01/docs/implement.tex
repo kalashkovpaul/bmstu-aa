@@ -3,21 +3,21 @@
 В данном разделе будут рассмотрены средства реализации, а также представлены листинги алгоритмов определения расстояния Левенштейна и Дамерау-Левенштейна.
 
 \section{Средства реализации}
-В данной работе для реализации был выбран язык программирования $Python \cite{python-lang}$. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
+В данной работе для реализации был выбран язык программирования $Python$~\cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
 и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
 
-Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time \cite{python-lang-time}$.
+Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time$~\cite{python-lang-time}.
 
 
 \section{Реализация алгоритмов}
 
-В листингах \ref{lst:lev_mat}-\ref{lst:dam_lev_rec_cache} представлена реализация алгоритмов нахождения расстояния Левенштейна и Дамерау-Левенштейна.
+В листингах \ref{lst:lev_mat}--\ref{lst:dam_lev_rec_cache} представлена реализация алгоритмов нахождения расстояния Левенштейна и Дамерау-Левенштейна.
 
 \clearpage
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:lev_mat,caption=Алгоритм нахождения расстояния Левенштейна (матричный)]
+    \begin{lstlisting}[label=lst:lev_mat,caption=Реализация алгоритма нахождения расстояния Левенштейна (матричный)]
 def levenshteinDistance(str1: str, str2: str, output: bool = True) -> int:
 	n = len(str1)
 	m = len(str2)
@@ -44,7 +44,7 @@ def levenshteinDistance(str1: str, str2: str, output: bool = True) -> int:
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:dam_lev_mat,caption=Алгоритм нахождения расстояния Дамерау-Левенштейна (матричный)]
+    \begin{lstlisting}[label=lst:dam_lev_mat,caption=Реализация алгоритма нахождения расстояния Дамерау-Левенштейна (матричного)]
 def damerauLevenshteinDistance(str1: str, str2: str, output: bool = True) -> int:
 	n = len(str1)
 	m = len(str2)
@@ -75,7 +75,7 @@ def damerauLevenshteinDistance(str1: str, str2: str, output: bool = True) -> int
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:dam_lev_rec,caption=Алгоритм нахождения расстояния Дамерау-Левенштейна (рекурсивный)]
+    \begin{lstlisting}[label=lst:dam_lev_rec,caption=Реализация алгоритма нахождения расстояния Дамерау-Левенштейна (рекурсивного)]
 def damerauLevenshteinDistanceRecursive(str1: str, str2: str, output: bool = True) -> int:
 	n = len(str1)
 	m = len(str2)
@@ -156,7 +156,7 @@ str1: str, str2: str, output: bool = True) -> int:
 
 \section{Функциональные тесты}
 
-В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы нахождения расстояния Левенштейна и Дамерау-Левенштейна. Тесты \textit{для всех алгоритмов} пройдены успешно.
+В таблице \ref{tbl:functional_test} приведена методология тестирования для функций, реализующих алгоритмы нахождения расстояния Левенштейна и Дамерау-\newlineЛевенштейна. Тесты для всех алгоритмов пройдены \textit{успешно}.
 
 \begin{table}[h]
 	\begin{center}

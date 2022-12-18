@@ -26,4 +26,4 @@
 \contentsline {section}{\numberline {4.3}Время выполнения алгоритмов}{24}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Вывод}{27}{section.4.4}%
 \contentsline {chapter}{Заключение}{28}{chapter*.15}%
-\contentsline {chapter}{Список использованных источников}{29}{chapter*.15}%
+\contentsline {chapter}{Список использованных источников}{29}{Item.24}%

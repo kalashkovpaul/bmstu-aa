@@ -3,10 +3,10 @@
 В данном разделе будут рассмотрены средства реализации, а также представлены листинги реализаций рассматриваемых сортировок.
 
 \section{Средства реализации}
-В данной работе для реализации был выбран язык программирования $Python$ \cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
+В данной работе для реализации был выбран язык программирования $Python$~\cite{python-lang}. В текущей лабораторной работе требуется замерить процессорное время работы выполняемой программы
 и визуализировать результаты при помощи графиков. Инструменты для этого присутствуют в выбранном языке программирования.
 
-Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time$ \cite{python-lang-time}.
+Время работы было замерено с помощью функции \textit{process\_time(...)} из библиотеки $time$~\cite{python-lang-time}.
 
 \section{Сведения о модулях программы}
 Программа состоит из шести модулей:
@@ -26,7 +26,7 @@
 
 \begin{center}
     \captionsetup{justification=raggedright,singlelinecheck=off}
-    \begin{lstlisting}[label=lst:pancake_sort,caption=Алгоритм блинной сортировки]
+    \begin{lstlisting}[label=lst:pancake_sort,caption=Реализация алгоритма блинной сортировки]
 	def pancakeSort(data, size):
 		if size > 1:
 			for currentSize in range(size, 1, -1):
@@ -41,7 +41,7 @@
 
 \begin{center}
 \captionsetup{justification=raggedright,singlelinecheck=off}
-\begin{lstlisting}[label=lst:radix_sort,caption=Алгоритм поразрядной сортировки]
+\begin{lstlisting}[label=lst:radix_sort,caption=Реализация алгоритма поразрядной сортировки]
 def radixSort(data, size):
 	maxElement = max(data)
 	place = 1
@@ -55,7 +55,7 @@ def radixSort(data, size):
 
 \begin{center}
 \captionsetup{justification=raggedright,singlelinecheck=off}
-\begin{lstlisting}[label=lst:counting_sort,caption=Алгоритм сортировки подсчётом]
+\begin{lstlisting}[label=lst:counting_sort,caption=Реализация алгоритма сортировки подсчётом]
 def countingSort(array, size, place):
 	output = [0] * size
 	count = [0] * 10
@@ -76,7 +76,7 @@ def countingSort(array, size, place):
 
 \begin{center}
 	\captionsetup{justification=raggedright,singlelinecheck=off}
-	\begin{lstlisting}[label=lst:bst_sort,caption=Алгоритм сортировки бинарным деревом]
+	\begin{lstlisting}[label=lst:bst_sort,caption=Реализация алгоритма сортировки бинарным деревом]
 class BSTree:
 	def __init__(self):
 		self.root = None
@@ -106,14 +106,14 @@ def bstSort(data, n):
 
 \section{Функциональные тесты}
 
-В таблице \ref{tbl:functional_test} приведены тесты для функций, реализующих алгоритмы сортировки. Тесты для всех сортировок пройдены \textit{успешно}.
+В таблице \ref{tbl:functional_test} приведена методология тестирования для функций, реализующих алгоритмы сортировки. Тесты для всех сортировок пройдены \textit{успешно}.
 \clearpage
 
 
 \begin{table}[h]
 	\begin{center}
 		\begin{threeparttable}
-		\captionsetup{justification=raggedleft,singlelinecheck=off}
+		\captionsetup{justification=raggedright,singlelinecheck=off}
 		\caption{\label{tbl:functional_test} Функциональные тесты}
 		\begin{tabular}{|c|c|c|}
 			\hline

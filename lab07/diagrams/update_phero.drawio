@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="QM2p47kPDZQZnexqTIiv" name="Страница 1">
-        <mxGraphModel dx="803" dy="605" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+        <mxGraphModel dx="2020" dy="1440" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -22,7 +22,7 @@
                 <mxCell id="167" value="ants = places" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
                     <mxGeometry x="860" y="210" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="241" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;rounded=0;endArrow=none;endFill=0;" edge="1" parent="1" source="181" target="227">
+                <mxCell id="241" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;rounded=0;endArrow=none;endFill=0;" parent="1" source="181" target="227" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="181" value="Цикл i от 0 до places" style="shape=loopLimit;whiteSpace=wrap;html=1;direction=east" parent="1" vertex="1">
@@ -33,7 +33,7 @@
                         <mxPoint x="1120" y="1110" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="256" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="201" target="238">
+                <mxCell id="256" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;endFill=0;" parent="1" source="201" target="238" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="201" value="pheromones[i][j] &amp;lt;&lt;br&gt;MIN_PHEROMONE" style="shape=rhombus;html=1;dashed=0;whitespace=wrap;perimeter=rhombusPerimeter;" parent="1" vertex="1">
@@ -65,10 +65,10 @@
                         <mxPoint x="800" y="1170" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="257" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="212" target="221">
+                <mxCell id="257" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="212" target="221" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="212" value="j += 1" style="shape=loopLimit;whiteSpace=wrap;html=1;strokeWidth=1;direction=west;" parent="1" vertex="1">
+                <mxCell id="212" value="Конец цикла&lt;br&gt;j += 1" style="shape=loopLimit;whiteSpace=wrap;html=1;strokeWidth=1;direction=west;" parent="1" vertex="1">
                     <mxGeometry x="860" y="1260" width="200" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="215" value="Конец" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
@@ -77,66 +77,69 @@
                 <mxCell id="226" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=-30;entryPerimeter=0;endArrow=none;endFill=0;" parent="1" source="221" target="215" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="221" value="i += 1" style="shape=loopLimit;whiteSpace=wrap;html=1;strokeWidth=1;direction=west;" parent="1" vertex="1">
+                <mxCell id="221" value="Конец цикла&lt;br&gt;i += 1" style="shape=loopLimit;whiteSpace=wrap;html=1;strokeWidth=1;direction=west;" parent="1" vertex="1">
                     <mxGeometry x="860" y="1350" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="248" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="227" target="228">
+                <mxCell id="248" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="227" target="228" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="227" value="Цикл j от 0 до places" style="shape=loopLimit;whiteSpace=wrap;html=1;direction=east" vertex="1" parent="1">
+                <mxCell id="227" value="Цикл j от 0 до places" style="shape=loopLimit;whiteSpace=wrap;html=1;direction=east" parent="1" vertex="1">
                     <mxGeometry x="860" y="390" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="249" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="228" target="229">
+                <mxCell id="249" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="228" target="229" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="228" value="delta_pheromones = 0" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                <mxCell id="228" value="delta_pheromones = 0" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
                     <mxGeometry x="860" y="480" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="250" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="229" target="230">
+                <mxCell id="250" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="229" target="230" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="229" value="Цикл ant от 0 до ants" style="shape=loopLimit;whiteSpace=wrap;html=1;direction=east" vertex="1" parent="1">
+                <mxCell id="229" value="Цикл ant от 0 до ants" style="shape=loopLimit;whiteSpace=wrap;html=1;direction=east" parent="1" vertex="1">
                     <mxGeometry x="860" y="570" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="251" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="230" target="231">
+                <mxCell id="251" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="230" target="231" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="230" value="length = calc_length(matrix, viisited[ant])" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+                <mxCell id="230" value="length = calc_length(matrix, viisited[ant])" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="1" vertex="1">
                     <mxGeometry x="860" y="660" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="252" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="231" target="237">
+                <mxCell id="252" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="231" target="237" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="231" value="delta_pheromones += q / length" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                <mxCell id="231" value="delta_pheromones += q / length" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
                     <mxGeometry x="860" y="750" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="235" value="calc_length(matrix, visited[ant]&lt;br&gt;&lt;br&gt;Суммарная длина пути" style="html=1;dashed=0;whitespace=wrap;shape=partialRectangle;right=0;align=left;" vertex="1" parent="1">
+                <mxCell id="235" value="calc_length(matrix, visited[ant]&lt;br&gt;&lt;br&gt;Суммарная длина пути" style="html=1;dashed=0;whitespace=wrap;shape=partialRectangle;right=0;align=left;" parent="1" vertex="1">
                     <mxGeometry x="1130" y="650" width="30" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="236" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="235">
+                <mxCell id="236" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="235" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1060" y="690" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="253" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="237" target="238">
+                <mxCell id="253" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="237" target="238" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="237" value="ant += 1" style="shape=loopLimit;whiteSpace=wrap;html=1;strokeWidth=1;direction=west;" vertex="1" parent="1">
+                <mxCell id="237" value="Конец цикла&lt;br&gt;ant += 1" style="shape=loopLimit;whiteSpace=wrap;html=1;strokeWidth=1;direction=west;" parent="1" vertex="1">
                     <mxGeometry x="860" y="840" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="255" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="238" target="201">
+                <mxCell id="255" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="238" target="201" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="238" value="pheromones[i][j] *= &lt;br&gt;(1 -&amp;nbsp;&lt;span style=&quot;text-align: left&quot;&gt;k_evaporation)&lt;br&gt;&lt;/span&gt;pheromones[i][j] += &lt;br&gt;delta_pheromones&lt;span style=&quot;text-align: left&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                <mxCell id="238" value="pheromones[i][j] *= &lt;br&gt;(1 -&amp;nbsp;&lt;span style=&quot;text-align: left&quot;&gt;k_evaporation)&lt;br&gt;&lt;/span&gt;pheromones[i][j] += &lt;br&gt;delta_pheromones&lt;span style=&quot;text-align: left&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
                     <mxGeometry x="860" y="930" width="200" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="239" value="MIN_PHEROMONE - минимально&lt;br&gt;возможное значение феромона&lt;br&gt;(0.01)" style="html=1;dashed=0;whitespace=wrap;shape=partialRectangle;right=0;align=left;" vertex="1" parent="1">
+                <mxCell id="239" value="MIN_PHEROMONE - минимально&lt;br&gt;возможное значение феромона&lt;br&gt;(0.01)" style="html=1;dashed=0;whitespace=wrap;shape=partialRectangle;right=0;align=left;" parent="1" vertex="1">
                     <mxGeometry x="1290" y="1100" width="30" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="240" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="239" parent="1">
+                <mxCell id="240" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="239" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1220" y="1140" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="258" value="" style="whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="70" width="830" height="1460" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
